@@ -1,0 +1,92 @@
+{
+  "name": "Open States API Vocabulary",
+  "description": "Key terms and concepts used in the Open States API v3 for US state legislative data.",
+  "source": "https://docs.openstates.org/api-v3/",
+  "terms": [
+    {
+      "term": "jurisdiction",
+      "definition": "A governmental body tracked by Open States. Includes all 50 US states, Washington DC, Puerto Rico, and select municipalities.",
+      "example": "ocd-jurisdiction/country:us/state:nc/government"
+    },
+    {
+      "term": "ocd-id",
+      "definition": "Open Civic Data identifier — a standardized URI scheme for political entities. Prefixes include ocd-jurisdiction, ocd-division, ocd-person, ocd-organization, ocd-bill, and ocd-vote.",
+      "example": "ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14"
+    },
+    {
+      "term": "bill",
+      "definition": "A piece of legislation introduced in a state legislature. Identified by a jurisdiction, session, and identifier (e.g. HB 1, SB 113).",
+      "example": "SB 113 in the 2020 session of North Carolina"
+    },
+    {
+      "term": "session",
+      "definition": "A period of legislative activity, typically annual or biennial. Identified by a string like '2023' or '2023S1' for special sessions.",
+      "example": "2023"
+    },
+    {
+      "term": "person",
+      "definition": "A legislator or government official. Includes current and past members of state legislatures and US Congress.",
+      "example": "A state senator representing district 3"
+    },
+    {
+      "term": "committee",
+      "definition": "A legislative committee or subcommittee within a chamber. May have member listings and subcommittees.",
+      "example": "Health & Public Services committee"
+    },
+    {
+      "term": "event",
+      "definition": "A scheduled legislative event such as a committee hearing or floor session. May include agenda items, participants, and documents.",
+      "example": "A Senate Finance Committee hearing"
+    },
+    {
+      "term": "vote",
+      "definition": "A recorded vote on a motion or bill. Includes individual member votes (yes/no/abstain) and vote counts.",
+      "example": "A floor vote with 48 yes, 22 no"
+    },
+    {
+      "term": "sponsorship",
+      "definition": "The relationship between a person or organization and a bill. Can be primary or co-sponsor.",
+      "example": "Primary sponsorship by Senator Jones"
+    },
+    {
+      "term": "action",
+      "definition": "A recorded step in a bill's legislative history, such as introduction, committee referral, or passage.",
+      "example": "Passed 3rd Reading on 2023-06-15"
+    },
+    {
+      "term": "classification",
+      "definition": "A categorical label applied to bills (e.g. bill, resolution, joint-resolution), committees (committee, subcommittee), or jurisdictions (state, municipality, country).",
+      "example": "bill"
+    },
+    {
+      "term": "division_id",
+      "definition": "Open Civic Data identifier for a geographic or administrative division.",
+      "example": "ocd-division/country:us/state:nc/sldu:3"
+    },
+    {
+      "term": "chamber",
+      "definition": "A legislative body within a jurisdiction. Typically upper (Senate) or lower (House). Some jurisdictions are unicameral.",
+      "example": "upper (North Carolina Senate)"
+    },
+    {
+      "term": "org_classification",
+      "definition": "The type of organization. Values: legislature, executive, lower, upper, government.",
+      "example": "upper"
+    },
+    {
+      "term": "apikey",
+      "definition": "An API authentication key, passed as a query parameter or X-Api-Key header. Obtain from open.pluralpolicy.com.",
+      "example": "X-Api-Key: abc123..."
+    },
+    {
+      "term": "include",
+      "definition": "A query parameter that requests additional nested data in the response. Specific allowed values depend on the endpoint.",
+      "example": "include=sponsorships&include=actions"
+    },
+    {
+      "term": "pagination",
+      "definition": "The Open States API paginates list results. Responses include a pagination object with per_page, page, max_page, and total_items.",
+      "example": "{per_page: 10, page: 1, max_page: 100, total_items: 1000}"
+    }
+  ]
+}

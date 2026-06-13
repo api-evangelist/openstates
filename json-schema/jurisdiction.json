@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openstates/main/json-schema/jurisdiction.json",
+  "title": "Jurisdiction",
+  "description": "A US state, territory, or municipality tracked by the Open States API.",
+  "type": "object",
+  "required": ["id", "name", "classification", "url", "latest_bill_update", "latest_people_update"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Open Civic Data jurisdiction identifier.",
+      "example": "ocd-jurisdiction/country:us/state:nc/government"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the jurisdiction.",
+      "example": "North Carolina"
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["state", "municipality", "country"],
+      "description": "Type of jurisdiction."
+    },
+    "division_id": {
+      "type": "string",
+      "description": "Open Civic Data division identifier.",
+      "example": "ocd-division/country:us/state:nc"
+    },
+    "url": {
+      "type": "string",
+      "description": "Official government website URL.",
+      "example": "https://nc.gov"
+    },
+    "latest_bill_update": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the most recent bill data update."
+    },
+    "latest_people_update": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the most recent people data update."
+    },
+    "organizations": {
+      "type": "array",
+      "description": "Legislative chambers (e.g. upper, lower).",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "classification"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "classification": {"type": "string"},
+          "districts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {"type": "string"},
+                "role": {"type": "string"},
+                "division_id": {"type": "string"},
+                "maximum_memberships": {"type": "integer"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "legislative_sessions": {
+      "type": "array",
+      "description": "List of legislative sessions for this jurisdiction.",
+      "items": {
+        "type": "object",
+        "required": ["identifier", "name", "classification", "start_date", "end_date"],
+        "properties": {
+          "identifier": {"type": "string"},
+          "name": {"type": "string"},
+          "classification": {"type": "string"},
+          "start_date": {"type": "string"},
+          "end_date": {"type": "string"},
+          "downloads": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "created_at": {"type": "string", "format": "date-time"},
+                "updated_at": {"type": "string", "format": "date-time"},
+                "data_type": {"type": "string"},
+                "url": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

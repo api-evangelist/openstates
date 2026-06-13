@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openstates/main/json-schema/person.json",
+  "title": "Person",
+  "description": "A legislator or government official tracked by the Open States API.",
+  "type": "object",
+  "required": ["id", "name", "party", "jurisdiction", "given_name", "family_name", "image", "email", "gender", "birth_date", "death_date", "extras", "created_at", "updated_at", "openstates_url"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Open Civic Data person identifier.",
+      "example": "ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full display name of the legislator.",
+      "example": "Angela Augusta"
+    },
+    "party": {
+      "type": "string",
+      "description": "Political party affiliation.",
+      "example": "Democratic"
+    },
+    "current_role": {
+      "type": "object",
+      "description": "Current legislative role.",
+      "properties": {
+        "title": {"type": "string", "example": "Senator"},
+        "org_classification": {"type": "string", "example": "upper"},
+        "district": {},
+        "division_id": {"type": "string"}
+      }
+    },
+    "jurisdiction": {
+      "type": "object",
+      "description": "Jurisdiction the person represents.",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "classification": {"type": "string"}
+      }
+    },
+    "given_name": {"type": "string", "example": "Angela"},
+    "family_name": {"type": "string", "example": "Augusta"},
+    "image": {"type": "string", "description": "URL to legislator's official photo."},
+    "email": {"type": "string", "description": "Official email address."},
+    "gender": {"type": "string"},
+    "birth_date": {"type": "string", "example": "1960-05-04"},
+    "death_date": {"type": "string"},
+    "extras": {"type": "object"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "openstates_url": {"type": "string", "description": "URL to this person's page on openstates.org."},
+    "other_identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["identifier", "scheme"],
+        "properties": {
+          "identifier": {"type": "string"},
+          "scheme": {"type": "string"}
+        }
+      }
+    },
+    "other_names": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "note"],
+        "properties": {
+          "name": {"type": "string"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {"type": "object", "properties": {"url": {"type": "string"}, "note": {"type": "string"}}}
+    },
+    "offices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {"type": "string"},
+          "fax": {"type": "string"},
+          "voice": {"type": "string"},
+          "address": {"type": "string"},
+          "classification": {"type": "string"}
+        }
+      }
+    }
+  }
+}

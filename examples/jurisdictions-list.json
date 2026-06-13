@@ -1,0 +1,45 @@
+{
+  "description": "Example response from GET /jurisdictions?classification=state",
+  "request": {
+    "method": "GET",
+    "url": "https://v3.openstates.org/jurisdictions",
+    "parameters": {
+      "classification": "state",
+      "per_page": 2
+    },
+    "headers": {
+      "X-Api-Key": "YOUR_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "results": [
+        {
+          "id": "ocd-jurisdiction/country:us/state:nc/government",
+          "name": "North Carolina",
+          "classification": "state",
+          "division_id": "ocd-division/country:us/state:nc",
+          "url": "https://nc.gov",
+          "latest_bill_update": "2023-06-15T12:00:00Z",
+          "latest_people_update": "2023-01-15T08:00:00Z"
+        },
+        {
+          "id": "ocd-jurisdiction/country:us/state:ca/government",
+          "name": "California",
+          "classification": "state",
+          "division_id": "ocd-division/country:us/state:ca",
+          "url": "https://ca.gov",
+          "latest_bill_update": "2023-06-14T12:00:00Z",
+          "latest_people_update": "2023-01-10T08:00:00Z"
+        }
+      ],
+      "pagination": {
+        "per_page": 2,
+        "page": 1,
+        "max_page": 26,
+        "total_items": 52
+      }
+    }
+  }
+}

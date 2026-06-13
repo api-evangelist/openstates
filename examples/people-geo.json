@@ -1,0 +1,54 @@
+{
+  "description": "Example response from GET /people.geo?lat=35.7796&lng=-78.6382 (Raleigh, NC)",
+  "request": {
+    "method": "GET",
+    "url": "https://v3.openstates.org/people.geo",
+    "parameters": {
+      "lat": 35.7796,
+      "lng": -78.6382
+    },
+    "headers": {
+      "X-Api-Key": "YOUR_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "results": [
+        {
+          "id": "ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14",
+          "name": "Angela Augusta",
+          "party": "Democratic",
+          "current_role": {
+            "title": "Senator",
+            "org_classification": "upper",
+            "district": "16",
+            "division_id": "ocd-division/country:us/state:nc/sldu:16"
+          },
+          "jurisdiction": {
+            "id": "ocd-jurisdiction/country:us/state:nc/government",
+            "name": "North Carolina",
+            "classification": "state"
+          },
+          "given_name": "Angela",
+          "family_name": "Augusta",
+          "image": "https://www.ncleg.gov/Members/MemberImage/S/123",
+          "email": "angela.augusta@ncleg.gov",
+          "gender": "female",
+          "birth_date": "",
+          "death_date": "",
+          "extras": {},
+          "created_at": "2021-01-13T00:00:00Z",
+          "updated_at": "2023-01-11T00:00:00Z",
+          "openstates_url": "https://openstates.org/person/angela-augusta-adb58f21/"
+        }
+      ],
+      "pagination": {
+        "per_page": 10,
+        "page": 1,
+        "max_page": 1,
+        "total_items": 3
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openstates/main/json-schema/bill.json",
+  "title": "Bill",
+  "description": "A legislative bill tracked by the Open States API.",
+  "type": "object",
+  "required": ["id", "session", "jurisdiction", "from_organization", "identifier", "title", "created_at", "updated_at", "openstates_url"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Open Civic Data bill identifier.",
+      "example": "ocd-bill/f0049138-1ad8-4506-a2a4-f4dd1251bbba"
+    },
+    "session": {
+      "type": "string",
+      "description": "Legislative session identifier.",
+      "example": "2020"
+    },
+    "jurisdiction": {
+      "$ref": "#/definitions/CompactJurisdiction"
+    },
+    "from_organization": {
+      "$ref": "#/definitions/Organization"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Bill identifier as assigned by the legislature.",
+      "example": "SB 113"
+    },
+    "title": {
+      "type": "string",
+      "description": "Official title of the bill.",
+      "example": "Adopting a State Scorpion"
+    },
+    "classification": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Bill classification (e.g. bill, resolution).",
+      "example": ["resolution"]
+    },
+    "subject": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Subject tags assigned to the bill.",
+      "example": ["SCORPIONS", "SYMBOLS"]
+    },
+    "extras": {
+      "type": "object",
+      "description": "Additional jurisdiction-specific data."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the record was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the record was last updated."
+    },
+    "openstates_url": {
+      "type": "string",
+      "description": "URL to the bill page on openstates.org.",
+      "example": "https://openstates.org/nc/bills/2019/HB1105/"
+    },
+    "first_action_date": {
+      "type": "string",
+      "description": "Date of the first recorded action.",
+      "example": "2020-01-01"
+    },
+    "latest_action_date": {
+      "type": "string",
+      "description": "Date of the most recent action.",
+      "example": "2020-02-01"
+    },
+    "latest_action_description": {
+      "type": "string",
+      "description": "Description of the most recent action.",
+      "example": "Introduced in House"
+    },
+    "latest_passage_date": {
+      "type": "string",
+      "description": "Date the bill most recently passed a chamber.",
+      "example": "2020-03-01"
+    },
+    "sponsorships": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/BillSponsorship"}
+    },
+    "actions": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/BillAction"}
+    },
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/Link"}
+    },
+    "versions": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/BillDocumentOrVersion"}
+    },
+    "documents": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/BillDocumentOrVersion"}
+    },
+    "votes": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/VoteEvent"}
+    }
+  },
+  "definitions": {
+    "CompactJurisdiction": {
+      "type": "object",
+      "required": ["id", "name", "classification"],
+      "properties": {
+        "id": {"type": "string", "example": "ocd-jurisdiction/country:us/state:nc/government"},
+        "name": {"type": "string", "example": "North Carolina"},
+        "classification": {"type": "string", "enum": ["state", "municipality", "country"]}
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "required": ["id", "name", "classification"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "classification": {"type": "string"}
+      }
+    },
+    "BillSponsorship": {
+      "type": "object",
+      "required": ["id", "name", "entity_type", "primary", "classification"],
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "name": {"type": "string"},
+        "entity_type": {"type": "string"},
+        "primary": {"type": "boolean"},
+        "classification": {"type": "string"}
+      }
+    },
+    "BillAction": {
+      "type": "object",
+      "required": ["id", "organization", "description", "date", "classification", "order"],
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "description": {"type": "string"},
+        "date": {"type": "string"},
+        "classification": {"type": "array", "items": {"type": "string"}},
+        "order": {"type": "integer"}
+      }
+    },
+    "Link": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {
+        "url": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "BillDocumentOrVersion": {
+      "type": "object",
+      "required": ["id", "note", "date", "classification", "links"],
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "note": {"type": "string"},
+        "date": {"type": "string"},
+        "classification": {"type": "string"},
+        "links": {"type": "array", "items": {"$ref": "#/definitions/Link"}}
+      }
+    },
+    "VoteEvent": {
+      "type": "object",
+      "required": ["id", "motion_text", "start_date", "result", "identifier", "extras", "organization", "votes", "counts", "sources"],
+      "properties": {
+        "id": {"type": "string"},
+        "motion_text": {"type": "string"},
+        "start_date": {"type": "string"},
+        "result": {"type": "string"},
+        "identifier": {"type": "string"}
+      }
+    }
+  }
+}

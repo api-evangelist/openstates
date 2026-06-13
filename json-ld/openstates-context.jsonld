@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ocd": "https://opencivicdata.org/",
+    "openstates": "https://openstates.org/api/v3/",
+
+    "Bill": "ocd:Bill",
+    "Person": "schema:Person",
+    "Organization": "schema:Organization",
+    "Event": "schema:Event",
+    "Jurisdiction": "ocd:Jurisdiction",
+    "Committee": "ocd:Organization",
+
+    "id": "@id",
+    "identifier": "schema:identifier",
+    "title": "schema:name",
+    "name": "schema:name",
+    "description": "schema:description",
+    "session": "ocd:legislativeSession",
+    "jurisdiction": "ocd:jurisdiction",
+    "classification": "schema:additionalType",
+    "subject": "schema:about",
+    "created_at": "schema:dateCreated",
+    "updated_at": "schema:dateModified",
+    "openstates_url": "schema:url",
+    "first_action_date": "schema:startDate",
+    "latest_action_date": "ocd:latestActionDate",
+    "latest_action_description": "ocd:latestActionDescription",
+    "latest_passage_date": "ocd:passageDate",
+    "sponsorships": "schema:author",
+    "actions": "ocd:action",
+    "sources": "schema:source",
+    "versions": "schema:workExample",
+    "documents": "schema:associatedMedia",
+    "votes": "ocd:vote",
+
+    "given_name": "schema:givenName",
+    "family_name": "schema:familyName",
+    "image": "schema:image",
+    "email": "schema:email",
+    "gender": "schema:gender",
+    "birth_date": "schema:birthDate",
+    "death_date": "schema:deathDate",
+    "party": "ocd:party",
+    "current_role": "ocd:currentRole",
+    "district": "ocd:district",
+    "division_id": "ocd:divisionId",
+    "offices": "schema:contactPoint",
+    "voice": "schema:telephone",
+    "fax": "schema:faxNumber",
+    "address": "schema:address",
+
+    "url": "schema:url",
+    "classification": "schema:additionalType",
+    "latest_bill_update": "ocd:latestBillUpdate",
+    "latest_people_update": "ocd:latestPeopleUpdate",
+    "legislative_sessions": "ocd:legislativeSessions",
+    "organizations": "schema:memberOf",
+
+    "start_date": "schema:startDate",
+    "end_date": "schema:endDate",
+    "location": "schema:location",
+    "participants": "schema:attendee",
+    "agenda": "schema:agenda",
+    "media": "schema:associatedMedia",
+
+    "motion_text": "ocd:motionText",
+    "result": "ocd:voteResult",
+    "counts": "ocd:voteCounts",
+    "option": "ocd:voteOption",
+    "value": "schema:value",
+
+    "per_page": "hydra:itemsPerPage",
+    "page": "hydra:pageIndex",
+    "max_page": "hydra:lastPageIndex",
+    "total_items": "hydra:totalItems",
+
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@type": "schema:WebAPI",
+      "@id": "https://v3.openstates.org/",
+      "schema:name": "Open States API v3",
+      "schema:description": "REST API providing programmatic access to US state legislative data including jurisdictions, legislators, bills, committees, and events.",
+      "schema:url": "https://docs.openstates.org/api-v3/",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "Plural Policy",
+        "schema:url": "https://pluralpolicy.com/"
+      },
+      "schema:documentation": "https://v3.openstates.org/docs/",
+      "schema:license": "https://openstates.org/about/",
+      "schema:version": "2021.11.12"
+    }
+  ]
+}

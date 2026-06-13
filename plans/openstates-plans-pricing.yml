@@ -1,0 +1,66 @@
+name: Open States API Plans & Pricing
+description: >
+  Open States provides free and tiered access to its legislative data API. Most
+  users operate on the free Default tier. Higher quotas are available on request
+  by contacting the Open States team. The project is volunteer-powered and
+  maintained under the Plural Policy umbrella.
+url: https://open.pluralpolicy.com/accounts/profile/
+plans:
+  - name: Default
+    description: >
+      Free tier available to all registered API key holders. Suitable for
+      personal projects, research, and low-volume integrations.
+    price: 0
+    priceCurrency: USD
+    rateLimits:
+      requestsPerMinute: 10
+      requestsPerDay: 500
+    features:
+      - Access to all v3 API endpoints
+      - Jurisdictions, People, Bills, Committees, Events
+      - JSON responses
+      - API key via open.pluralpolicy.com
+  - name: Bronze
+    description: >
+      Elevated quota for active developers and civic-tech projects. Available
+      on request by contacting contact@openstates.org.
+    price: 0
+    priceCurrency: USD
+    rateLimits:
+      requestsPerMinute: 40
+      requestsPerDay: 5000
+    features:
+      - All Default tier features
+      - Higher daily request quota
+      - Suitable for production apps with moderate traffic
+  - name: Silver
+    description: >
+      High-volume tier for applications serving many users or performing bulk
+      lookups. Available by arrangement with the Open States team.
+    price: 0
+    priceCurrency: USD
+    rateLimits:
+      requestsPerMinute: 80
+      requestsPerDay: 50000
+    features:
+      - All Bronze tier features
+      - High daily request quota
+      - Suitable for larger civic and commercial integrations
+  - name: Unlimited
+    description: >
+      Maximum quota tier for partners with very high throughput requirements.
+      Requires direct agreement with Open States / Plural Policy.
+    price: 0
+    priceCurrency: USD
+    rateLimits:
+      requestsPerMinute: 240
+      requestsPerDay: 1000000000
+    features:
+      - All Silver tier features
+      - Near-unlimited daily requests
+      - Reserved for institutional partners
+contact: contact@openstates.org
+notes: >
+  Pricing is not publicly listed. All tiers are currently provided at no
+  monetary cost. To request a quota upgrade, email contact@openstates.org
+  describing your use case. Bulk data downloads are also available separately.

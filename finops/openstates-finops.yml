@@ -1,0 +1,44 @@
+name: Open States API FinOps
+description: >
+  Open States is a volunteer-powered civic technology project operated under
+  Plural Policy. The API is provided free of charge across all tiers. There are
+  no per-request fees or subscription costs. Financial sustainability relies on
+  donations, grants, and the Plural Policy commercial platform. FinOps
+  considerations focus on quota management rather than cost control.
+url: https://pluralpolicy.com/open
+pricing:
+  model: free
+  currency: USD
+  perRequestCost: 0
+  monthlySubscriptionCost: 0
+  notes: >
+    No monetary cost is associated with any API tier. Organizations requiring
+    high-volume access should contact contact@openstates.org. Bulk data
+    downloads are available as an alternative to high-frequency API calls.
+costOptimization:
+  - strategy: Use bulk downloads for large dataset needs
+    description: >
+      For ingesting large volumes of legislative data, bulk downloads are
+      more efficient than repeated API calls and do not count against rate limits.
+    url: https://docs.openstates.org/
+  - strategy: Cache API responses locally
+    description: >
+      Legislative data changes infrequently. Caching responses for bills,
+      jurisdictions, and committee data reduces redundant API calls.
+  - strategy: Request quota upgrade proactively
+    description: >
+      If approaching daily limits, request a tier upgrade from the Open States
+      team before hitting rate limit errors rather than after.
+    contact: contact@openstates.org
+  - strategy: Use pagination and field filtering
+    description: >
+      The v3 API supports field inclusion/exclusion parameters. Requesting
+      only needed fields reduces payload size and processing overhead.
+sustainability:
+  donationUrl: https://openstates.org/about/
+  parentOrganization: Plural Policy
+  parentUrl: https://pluralpolicy.com/
+  notes: >
+    Open States encourages users who derive value from the platform to
+    contribute financially or via code contributions to the open-source
+    scrapers and data pipelines.

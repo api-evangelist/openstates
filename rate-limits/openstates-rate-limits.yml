@@ -1,0 +1,50 @@
+name: Open States API Rate Limits
+description: >
+  Open States API v3 enforces per-minute and per-day rate limits tied to the
+  API key tier. Limits are applied per API key. Exceeding limits results in
+  HTTP 429 responses. Tier upgrades are available by contacting the team.
+url: https://docs.openstates.org/api-v3/
+tiers:
+  - name: Default
+    requestsPerMinute: 10
+    requestsPerHour: null
+    requestsPerDay: 500
+    notes: Default tier assigned to all newly registered API keys.
+  - name: Legacy
+    requestsPerMinute: 40
+    requestsPerHour: null
+    requestsPerDay: 5000
+    notes: Assigned to pre-v3 legacy API key holders during migration.
+  - name: Bronze
+    requestsPerMinute: 40
+    requestsPerHour: null
+    requestsPerDay: 5000
+    notes: Standard elevated tier for active developers; available on request.
+  - name: Silver
+    requestsPerMinute: 80
+    requestsPerHour: null
+    requestsPerDay: 50000
+    notes: High-volume tier for production applications serving many users.
+  - name: Unlimited
+    requestsPerMinute: 240
+    requestsPerHour: null
+    requestsPerDay: 1000000000
+    notes: >
+      Reserved for institutional partners; effectively unlimited for
+      practical purposes.
+headers:
+  apiKey:
+    name: X-API-KEY
+    in: header
+    description: API key obtained from open.pluralpolicy.com
+  apiKeyQuery:
+    name: apikey
+    in: query
+    description: Alternative to header-based authentication; pass key as query param.
+enforcement:
+  httpStatusOnExceed: 429
+  retryAfterHeader: true
+  contactForUpgrade: contact@openstates.org
+sources:
+  - https://github.com/openstates/issues/discussions/205
+  - https://docs.openstates.org/api-v3/

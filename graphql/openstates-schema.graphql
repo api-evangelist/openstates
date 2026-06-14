@@ -42,7 +42,7 @@ type Query {
 
   person(id: ID): Person
 
-  # Organization query
+  # Organization / Committee query
   organization(id: ID): Organization
 
   # Bill queries
@@ -69,6 +69,17 @@ type Query {
     first: Int
     last: Int
   ): BillConnection
+
+  # Event queries
+  events(
+    jurisdiction: String
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): EventConnection
+
+  event(id: ID): Event
 }
 
 # -------------------------------------------------------------------
@@ -85,7 +96,7 @@ input SponsorInput {
 # Base / Shared Types
 # -------------------------------------------------------------------
 
-# Base type for Open Civic Data entities
+# Base interface for Open Civic Data entities
 interface OCDBase {
   id: String
   createdAt: String
@@ -111,7 +122,18 @@ type Name {
 }
 
 # -------------------------------------------------------------------
-# Core Types: Jurisdiction, Organization, Person, Membership
+# Pagination: Relay-style PageInfo
+# -------------------------------------------------------------------
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+# -------------------------------------------------------------------
+# Jurisdiction & Legislative Session Types
 # -------------------------------------------------------------------
 
 type Jurisdiction {
@@ -148,6 +170,17 @@ type JurisdictionEdge {
   cursor: String!
 }
 
+# Represents a legislative session within a jurisdiction
+type Session {
+  jurisdiction: Jurisdiction
+  identifier: String
+  name: String
+  classification: String
+  startDate: String
+  endDate: String
+}
+
+# Alias for backward-compat (same as Session)
 type LegislativeSession {
   jurisdiction: Jurisdiction
   identifier: String
@@ -166,6 +199,19 @@ type LegislativeSessionEdge {
   node: LegislativeSession
   cursor: String!
 }
+
+# Metadata about a scraped session run
+type SessionScraped {
+  session: Session
+  scrapedAt: String
+  success: Boolean
+  recordsUpdated: Int
+  errors: [String]
+}
+
+# -------------------------------------------------------------------
+# Division & Post
+# -------------------------------------------------------------------
 
 type Division {
   id: String
@@ -190,6 +236,44 @@ type Post {
   maximumMemberships: Int
 }
 
+# -------------------------------------------------------------------
+# Person & Related Sub-Types
+# -------------------------------------------------------------------
+
+# A single image URL associated with a legislator
+type PersonImage {
+  url: String
+  note: String
+}
+
+# An alternate or historical name for a person
+type PersonName {
+  name: String
+  note: String
+  startDate: String
+  endDate: String
+}
+
+# An external link associated with a person (official page, etc.)
+type PersonLink {
+  url: String
+  note: String
+}
+
+# A data source citation for a person record
+type PersonSource {
+  url: String
+  note: String
+}
+
+# Contact information entry for a legislator
+type PersonContact {
+  type: String
+  value: String
+  note: String
+  label: String
+}
+
 type Office {
   classification: String
   address: String
@@ -198,6 +282,7 @@ type Office {
   displayName: String
 }
 
+# Deprecated alias kept for backwards compatibility
 type ContactDetail {
   type: String
   value: String
@@ -220,11 +305,12 @@ type Person {
   primaryParty: String
   email: String
 
+  images: [PersonImage]
   identifiers: [Identifier]
-  otherNames: [Name]
-  links: [Link]
-  sources: [Link]
-  contactDetails: [ContactDetail]
+  otherNames: [PersonName]
+  links: [PersonLink]
+  sources: [PersonSource]
+  contactDetails: [PersonContact]
   offices: [Office]
   currentMemberships(classification: [String]): [Membership]
   oldMemberships(classification: [String]): [Membership]
@@ -246,6 +332,10 @@ type PersonEdge {
   node: Person
   cursor: String!
 }
+
+# -------------------------------------------------------------------
+# Organization, Committee & Membership
+# -------------------------------------------------------------------
 
 type Organization {
   id: String
@@ -301,8 +391,30 @@ type Membership {
   endDate: String
 }
 
+# A legislative committee (specialisation of Organization)
+type Committee {
+  id: String
+  createdAt: String
+  updatedAt: String
+  name: String
+  classification: String
+  chamber: String
+  jurisdiction: Jurisdiction
+  parent: Committee
+  members: [CommitteeMember]
+  sources: [Link]
+}
+
+# A member of a committee with their role
+type CommitteeMember {
+  person: Person
+  role: String
+  startDate: String
+  endDate: String
+}
+
 # -------------------------------------------------------------------
-# Legislative Types: Bill, VoteEvent, BillAction
+# Bill & Related Sub-Types
 # -------------------------------------------------------------------
 
 type BillAbstract {
@@ -322,11 +434,72 @@ type BillIdentifier {
   note: String
 }
 
+# Entity (person or organization) related to a bill action
+type BillActionRelatedEntity {
+  name: String
+  entityType: String
+  organization: Organization
+  person: Person
+}
+
+# Deprecated alias for BillActionRelatedEntity
 type RelatedEntity {
   name: String
   entityType: String
   organization: Organization
   person: Person
+}
+
+type BillAction {
+  organization: Organization
+  description: String
+  date: String
+  classification: [String]
+  order: Int
+  extras: String
+  vote: VoteEvent
+  relatedEntities: [BillActionRelatedEntity]
+}
+
+# A link to a bill document file with MIME type info
+type BillDocumentLink {
+  mediaType: String
+  url: String
+  text: String
+}
+
+# Deprecated alias for BillDocumentLink
+type MimetypeLink {
+  mediaType: String
+  url: String
+  text: String
+}
+
+# A supporting document (amendment, fiscal note, etc.) attached to a bill
+type BillDocument {
+  note: String
+  date: String
+  links: [BillDocumentLink]
+}
+
+# A link to a bill version file with MIME type info
+type BillVersionLink {
+  mediaType: String
+  url: String
+  text: String
+}
+
+# A version/text of the bill (introduced, amended, enrolled, etc.)
+type BillVersion {
+  note: String
+  date: String
+  links: [BillVersionLink]
+}
+
+# A source URL citation for a bill record
+type BillSource {
+  url: String
+  note: String
 }
 
 type BillSponsorship {
@@ -338,6 +511,15 @@ type BillSponsorship {
   classification: String
 }
 
+# A cross-reference to a related bill (companion, amendment, etc.)
+type BillRelatedBill {
+  identifier: String
+  legislativeSession: String
+  relationType: String
+  relatedBill: Bill
+}
+
+# Deprecated alias for BillRelatedBill
 type RelatedBill {
   identifier: String
   legislativeSession: String
@@ -345,27 +527,39 @@ type RelatedBill {
   relatedBill: Bill
 }
 
-type BillAction {
-  organization: Organization
-  description: String
-  date: String
-  classification: [String]
-  order: Int
-  extras: String
-  vote: VoteEvent
-  relatedEntities: [RelatedEntity]
-}
-
-type MimetypeLink {
-  mediaType: String
-  url: String
-  text: String
-}
-
-type BillDocument {
+# A voter's cast vote on a VoteEvent
+type BillVoteVoter {
+  option: String
+  voterName: String
+  voter: Person
   note: String
-  date: String
-  links: [MimetypeLink]
+}
+
+# Deprecated alias for BillVoteVoter
+type PersonVote {
+  option: String
+  voterName: String
+  voter: Person
+  note: String
+}
+
+# A summary count of votes by option (yes/no/abstain/etc.)
+type BillVoteCount {
+  option: String
+  value: Int
+}
+
+# Deprecated alias for BillVoteCount
+type VoteCount {
+  option: String
+  value: Int
+}
+
+# A person's vote record as seen from the bill perspective
+type BillVote {
+  option: String
+  note: String
+  voteEvent: VoteEvent
 }
 
 type Bill {
@@ -380,16 +574,15 @@ type Bill {
   classification: [String]
   subject: [String]
 
-  # related fields
   abstracts: [BillAbstract]
   otherTitles: [BillTitle]
   otherIdentifiers: [BillIdentifier]
   actions: [BillAction]
   sponsorships: [BillSponsorship]
-  relatedBills: [RelatedBill]
+  relatedBills: [BillRelatedBill]
   documents: [BillDocument]
-  versions: [BillDocument]
-  sources: [Link]
+  versions: [BillVersion]
+  sources: [BillSource]
   votes(
     before: String
     after: String
@@ -397,7 +590,6 @@ type Bill {
     last: Int
   ): VoteConnection
 
-  # computed fields
   openstatesUrl: String
 }
 
@@ -412,23 +604,9 @@ type BillEdge {
   cursor: String!
 }
 
-type VoteCount {
-  option: String
-  value: Int
-}
-
-type PersonVote {
-  option: String
-  voterName: String
-  voter: Person
-  note: String
-}
-
-type BillVote {
-  option: String
-  note: String
-  voteEvent: VoteEvent
-}
+# -------------------------------------------------------------------
+# Vote / VoteEvent Types
+# -------------------------------------------------------------------
 
 type VoteEvent {
   id: String
@@ -447,8 +625,8 @@ type VoteEvent {
   legislativeSession: LegislativeSession
   bill: Bill
 
-  votes: [PersonVote]
-  counts: [VoteCount]
+  votes: [BillVoteVoter]
+  counts: [BillVoteCount]
   sources: [Link]
 }
 
@@ -473,12 +651,56 @@ type BillVoteEdge {
 }
 
 # -------------------------------------------------------------------
-# Relay PageInfo
+# Event Types
 # -------------------------------------------------------------------
 
-type PageInfo {
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-  endCursor: String
+# An entity related to an event agenda item (bill, person, organization)
+type EventRelatedEntity {
+  entityType: String
+  name: String
+  bill: Bill
+  person: Person
+  organization: Organization
+  note: String
+}
+
+# A single item on a legislative event agenda
+type EventAgendaItem {
+  description: String
+  order: Int
+  subjects: [String]
+  notes: [String]
+  relatedEntities: [EventRelatedEntity]
+}
+
+# A legislative event such as a committee hearing or floor session
+type Event {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  name: String
+  description: String
+  classification: String
+  startDate: String
+  endDate: String
+  timezone: String
+  allDay: Boolean
+  status: String
+  location: String
+
+  jurisdiction: Jurisdiction
+  agenda: [EventAgendaItem]
+  sources: [Link]
+}
+
+type EventConnection {
+  pageInfo: PageInfo!
+  edges: [EventEdge]
+  totalCount: Int
+}
+
+type EventEdge {
+  node: Event
+  cursor: String!
 }

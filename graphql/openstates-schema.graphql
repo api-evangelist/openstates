@@ -1,0 +1,484 @@
+# Open States GraphQL API Schema (v2 - Deprecated)
+# Derived from source: https://github.com/openstates/openstates.org/tree/main/graphapi
+# Endpoint: https://openstates.org/graphql/
+# Authentication: API key required (obtain at https://open.pluralpolicy.com/)
+# Note: This v2 GraphQL API is deprecated; migrate to REST API v3 at https://v3.openstates.org/
+
+schema {
+  query: Query
+}
+
+# -------------------------------------------------------------------
+# Root Query
+# -------------------------------------------------------------------
+
+type Query {
+  # Jurisdiction queries
+  jurisdictions(
+    classification: String
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): JurisdictionConnection
+
+  jurisdiction(id: String, name: String): Jurisdiction
+
+  # People queries
+  people(
+    memberOf: String
+    everMemberOf: String
+    district: String
+    divisionId: String
+    name: String
+    updatedSince: String
+    latitude: Float
+    longitude: Float
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): PersonConnection
+
+  person(id: ID): Person
+
+  # Organization query
+  organization(id: ID): Organization
+
+  # Bill queries
+  bill(
+    id: String
+    jurisdiction: String
+    session: String
+    identifier: String
+    openstatesUrl: String
+  ): Bill
+
+  bills(
+    jurisdiction: String
+    session: String
+    chamber: String
+    updatedSince: String
+    subject: String
+    sponsor: SponsorInput
+    classification: String
+    actionSince: String
+    searchQuery: String
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): BillConnection
+}
+
+# -------------------------------------------------------------------
+# Input Types
+# -------------------------------------------------------------------
+
+input SponsorInput {
+  name: String
+  primary: Boolean
+  person: String
+}
+
+# -------------------------------------------------------------------
+# Base / Shared Types
+# -------------------------------------------------------------------
+
+# Base type for Open Civic Data entities
+interface OCDBase {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+}
+
+type Identifier {
+  identifier: String
+  scheme: String
+}
+
+type Link {
+  note: String
+  url: String
+}
+
+type Name {
+  name: String
+  note: String
+  startDate: String
+  endDate: String
+}
+
+# -------------------------------------------------------------------
+# Core Types: Jurisdiction, Organization, Person, Membership
+# -------------------------------------------------------------------
+
+type Jurisdiction {
+  id: String
+  name: String
+  url: String
+  classification: String
+  featureFlags: [String]
+  lastScrapedAt: String
+
+  legislativeSessions(
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): LegislativeSessionConnection
+
+  organizations(
+    classification: [String]
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): OrganizationConnection
+}
+
+type JurisdictionConnection {
+  pageInfo: PageInfo!
+  edges: [JurisdictionEdge]
+}
+
+type JurisdictionEdge {
+  node: Jurisdiction
+  cursor: String!
+}
+
+type LegislativeSession {
+  jurisdiction: Jurisdiction
+  identifier: String
+  name: String
+  classification: String
+  startDate: String
+  endDate: String
+}
+
+type LegislativeSessionConnection {
+  pageInfo: PageInfo!
+  edges: [LegislativeSessionEdge]
+}
+
+type LegislativeSessionEdge {
+  node: LegislativeSession
+  cursor: String!
+}
+
+type Division {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  name: String
+  redirect: Division
+  country: String
+}
+
+type Post {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  label: String
+  role: String
+  division: Division
+  startDate: String
+  endDate: String
+  maximumMemberships: Int
+}
+
+type Office {
+  classification: String
+  address: String
+  voice: String
+  fax: String
+  displayName: String
+}
+
+type ContactDetail {
+  type: String
+  value: String
+  note: String
+  label: String
+}
+
+type Person {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  name: String
+  sortName: String
+  familyName: String
+  givenName: String
+  image: String
+  birthDate: String
+  deathDate: String
+  primaryParty: String
+  email: String
+
+  identifiers: [Identifier]
+  otherNames: [Name]
+  links: [Link]
+  sources: [Link]
+  contactDetails: [ContactDetail]
+  offices: [Office]
+  currentMemberships(classification: [String]): [Membership]
+  oldMemberships(classification: [String]): [Membership]
+  votes(
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): BillVoteConnection
+}
+
+type PersonConnection {
+  pageInfo: PageInfo!
+  edges: [PersonEdge]
+  totalCount: Int
+}
+
+type PersonEdge {
+  node: Person
+  cursor: String!
+}
+
+type Organization {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  name: String
+  image: String
+  classification: String
+  foundingDate: String
+  dissolutionDate: String
+  jurisdictionId: String
+
+  parent: Organization
+  children(
+    classification: String
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): OrganizationConnection
+  currentMemberships: [Membership]
+
+  identifiers: [Identifier]
+  otherNames: [Name]
+  links: [Link]
+  sources: [Link]
+}
+
+type OrganizationConnection {
+  pageInfo: PageInfo!
+  edges: [OrganizationEdge]
+  totalCount: Int
+}
+
+type OrganizationEdge {
+  node: Organization
+  cursor: String!
+}
+
+type Membership {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  organization: Organization
+  person: Person
+  personName: String
+  post: Post
+  label: String
+  role: String
+  startDate: String
+  endDate: String
+}
+
+# -------------------------------------------------------------------
+# Legislative Types: Bill, VoteEvent, BillAction
+# -------------------------------------------------------------------
+
+type BillAbstract {
+  abstract: String
+  note: String
+  date: String
+}
+
+type BillTitle {
+  title: String
+  note: String
+}
+
+type BillIdentifier {
+  identifier: String
+  scheme: String
+  note: String
+}
+
+type RelatedEntity {
+  name: String
+  entityType: String
+  organization: Organization
+  person: Person
+}
+
+type BillSponsorship {
+  name: String
+  entityType: String
+  organization: Organization
+  person: Person
+  primary: Boolean
+  classification: String
+}
+
+type RelatedBill {
+  identifier: String
+  legislativeSession: String
+  relationType: String
+  relatedBill: Bill
+}
+
+type BillAction {
+  organization: Organization
+  description: String
+  date: String
+  classification: [String]
+  order: Int
+  extras: String
+  vote: VoteEvent
+  relatedEntities: [RelatedEntity]
+}
+
+type MimetypeLink {
+  mediaType: String
+  url: String
+  text: String
+}
+
+type BillDocument {
+  note: String
+  date: String
+  links: [MimetypeLink]
+}
+
+type Bill {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  legislativeSession: LegislativeSession
+  identifier: String
+  title: String
+  fromOrganization: Organization
+  classification: [String]
+  subject: [String]
+
+  # related fields
+  abstracts: [BillAbstract]
+  otherTitles: [BillTitle]
+  otherIdentifiers: [BillIdentifier]
+  actions: [BillAction]
+  sponsorships: [BillSponsorship]
+  relatedBills: [RelatedBill]
+  documents: [BillDocument]
+  versions: [BillDocument]
+  sources: [Link]
+  votes(
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): VoteConnection
+
+  # computed fields
+  openstatesUrl: String
+}
+
+type BillConnection {
+  pageInfo: PageInfo!
+  edges: [BillEdge]
+  totalCount: Int
+}
+
+type BillEdge {
+  node: Bill
+  cursor: String!
+}
+
+type VoteCount {
+  option: String
+  value: Int
+}
+
+type PersonVote {
+  option: String
+  voterName: String
+  voter: Person
+  note: String
+}
+
+type BillVote {
+  option: String
+  note: String
+  voteEvent: VoteEvent
+}
+
+type VoteEvent {
+  id: String
+  createdAt: String
+  updatedAt: String
+  extras: String
+  identifier: String
+  motionText: String
+  motionClassification: [String]
+  startDate: String
+  endDate: String
+  result: String
+
+  organization: Organization
+  billAction: BillAction
+  legislativeSession: LegislativeSession
+  bill: Bill
+
+  votes: [PersonVote]
+  counts: [VoteCount]
+  sources: [Link]
+}
+
+type VoteConnection {
+  pageInfo: PageInfo!
+  edges: [VoteEdge]
+}
+
+type VoteEdge {
+  node: VoteEvent
+  cursor: String!
+}
+
+type BillVoteConnection {
+  pageInfo: PageInfo!
+  edges: [BillVoteEdge]
+}
+
+type BillVoteEdge {
+  node: BillVote
+  cursor: String!
+}
+
+# -------------------------------------------------------------------
+# Relay PageInfo
+# -------------------------------------------------------------------
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}

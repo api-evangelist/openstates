@@ -9,7 +9,7 @@ description: 'Open States is a civic technology project that aggregates and publ
 
   '
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/openstates/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -34,7 +34,7 @@ apis:
     documentation is available via Swagger UI and ReDoc.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
@@ -66,7 +66,7 @@ apis:
     migrate to the REST v3 API.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.openstates.org/graphql/
   baseURL: https://openstates.org/graphql/
   tags:

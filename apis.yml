@@ -84,6 +84,8 @@ apis:
   - FN: Open States Support
     email: contact@openstates.org
 common:
+- type: DomainSecurity
+  url: security/openstates-domain-security.yml
 - type: Website
   url: https://pluralpolicy.com/open
 - type: Documentation

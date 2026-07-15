@@ -84,6 +84,8 @@ apis:
   - FN: Open States Support
     email: contact@openstates.org
 common:
+- type: AgenticAccess
+  url: agentic-access/openstates-agentic-access.yml
 - type: DomainSecurity
   url: security/openstates-domain-security.yml
 - type: Website

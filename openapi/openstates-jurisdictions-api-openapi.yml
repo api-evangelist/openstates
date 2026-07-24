@@ -1,0 +1,404 @@
+openapi: 3.0.2
+info:
+  title: Open States API v3 bills jurisdictions API
+  description: '
+
+    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
+
+    * [Register for an account](https://openstates.org/accounts/signup/)
+
+
+
+    **We are currently working to restore experimental support for committees & events.**
+
+
+    During this period please note that data is not yet available for all states
+
+    and the exact format of the new endpoints may change slightly depending on user feedback.
+
+
+    If you have any issues or questions use our
+
+    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+  version: 2021.11.12
+tags:
+- name: jurisdictions
+paths:
+  /jurisdictions:
+    get:
+      tags:
+      - jurisdictions
+      summary: Jurisdiction List
+      description: Get list of supported Jurisdictions, a Jurisdiction is a state or municipality.
+      operationId: jurisdiction_list_jurisdictions_get
+      parameters:
+      - description: Filter returned jurisdictions by type.
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/JurisdictionClassification'
+          description: Filter returned jurisdictions by type.
+        name: classification
+        in: query
+      - description: Additional information to include in response.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/JurisdictionInclude'
+          description: Additional information to include in response.
+          default: []
+        name: include
+        in: query
+      - required: false
+        schema:
+          title: Page
+          type: integer
+          default: 1
+        name: page
+        in: query
+      - required: false
+        schema:
+          title: Per Page
+          type: integer
+          default: 52
+        name: per_page
+        in: query
+      - required: false
+        schema:
+          title: Apikey
+          type: string
+        name: apikey
+        in: query
+      - required: false
+        schema:
+          title: X-Api-Key
+          type: string
+        name: x-api-key
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JurisdictionList'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /jurisdictions/{jurisdiction_id}:
+    get:
+      tags:
+      - jurisdictions
+      summary: Jurisdiction Detail
+      description: Get details on a single Jurisdiction (e.g. state or municipality).
+      operationId: jurisdiction_detail_jurisdictions__jurisdiction_id__get
+      parameters:
+      - required: true
+        schema:
+          title: Jurisdiction Id
+          type: string
+        name: jurisdiction_id
+        in: path
+      - description: Additional includes for the Jurisdiction response.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/JurisdictionInclude'
+          description: Additional includes for the Jurisdiction response.
+          default: []
+        name: include
+        in: query
+      - required: false
+        schema:
+          title: Apikey
+          type: string
+        name: apikey
+        in: query
+      - required: false
+        schema:
+          title: X-Api-Key
+          type: string
+        name: x-api-key
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Jurisdiction'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Post:
+      title: Post
+      required:
+      - label
+      - role
+      - division_id
+      - maximum_memberships
+      type: object
+      properties:
+        label:
+          title: Label
+          type: string
+          example: '2'
+        role:
+          title: Role
+          type: string
+          example: Senator
+        division_id:
+          title: Division Id
+          type: string
+          example: ocd-division/country:us/state:mn/sldu:4
+        maximum_memberships:
+          title: Maximum Memberships
+          type: integer
+          example: 1
+    LegislativeSession:
+      title: LegislativeSession
+      required:
+      - identifier
+      - name
+      - classification
+      - start_date
+      - end_date
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+        name:
+          title: Name
+          type: string
+        classification:
+          title: Classification
+          type: string
+        start_date:
+          title: Start Date
+          type: string
+        end_date:
+          title: End Date
+          type: string
+        downloads:
+          title: Downloads
+          type: array
+          items:
+            $ref: '#/components/schemas/DataExport'
+    PaginationMeta:
+      title: PaginationMeta
+      required:
+      - per_page
+      - page
+      - max_page
+      - total_items
+      type: object
+      properties:
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
+    JurisdictionList:
+      title: JurisdictionList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Jurisdiction'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    DataExport:
+      title: DataExport
+      required:
+      - created_at
+      - updated_at
+      - data_type
+      - url
+      type: object
+      properties:
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+        data_type:
+          title: Data Type
+          type: string
+        url:
+          title: Url
+          type: string
+    RunPlan:
+      title: RunPlan
+      required:
+      - success
+      - start_time
+      - end_time
+      type: object
+      properties:
+        success:
+          title: Success
+          type: boolean
+        start_time:
+          title: Start Time
+          type: string
+          format: date-time
+        end_time:
+          title: End Time
+          type: string
+          format: date-time
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
+    Jurisdiction:
+      title: Jurisdiction
+      required:
+      - id
+      - name
+      - classification
+      - url
+      - latest_bill_update
+      - latest_people_update
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-jurisdiction/country:us/state:nc/government
+        name:
+          title: Name
+          type: string
+          example: North Carolina
+        classification:
+          allOf:
+          - $ref: '#/components/schemas/JurisdictionClassification'
+          example: state
+        division_id:
+          title: Division Id
+          type: string
+          default: ''
+          example: ocd-division/country:us/state:nc
+        url:
+          title: Url
+          type: string
+          example: https://nc.gov
+        latest_bill_update:
+          title: Latest Bill Update
+          type: string
+          format: date-time
+        latest_people_update:
+          title: Latest People Update
+          type: string
+          format: date-time
+        organizations:
+          title: Organizations
+          type: array
+          items:
+            $ref: '#/components/schemas/Chamber'
+        legislative_sessions:
+          title: Legislative Sessions
+          type: array
+          items:
+            $ref: '#/components/schemas/LegislativeSession'
+        latest_runs:
+          title: Latest Runs
+          type: array
+          items:
+            $ref: '#/components/schemas/RunPlan'
+    JurisdictionInclude:
+      title: JurisdictionInclude
+      enum:
+      - organizations
+      - legislative_sessions
+      - latest_runs
+      type: string
+      description: An enumeration.
+    Chamber:
+      title: Chamber
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
+        name:
+          title: Name
+          type: string
+          example: North Carolina General Assembly
+        classification:
+          title: Classification
+          type: string
+          example: legislature
+        districts:
+          title: Districts
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'

@@ -1,0 +1,671 @@
+openapi: 3.0.2
+info:
+  title: Open States API v3 bills events API
+  description: '
+
+    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
+
+    * [Register for an account](https://openstates.org/accounts/signup/)
+
+
+
+    **We are currently working to restore experimental support for committees & events.**
+
+
+    During this period please note that data is not yet available for all states
+
+    and the exact format of the new endpoints may change slightly depending on user feedback.
+
+
+    If you have any issues or questions use our
+
+    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+  version: 2021.11.12
+tags:
+- name: events
+paths:
+  /events:
+    get:
+      tags:
+      - events
+      summary: Event List
+      operationId: event_list_events_get
+      parameters:
+      - description: Filter by jurisdiction name or ID.
+        required: false
+        schema:
+          title: Jurisdiction
+          type: string
+          description: Filter by jurisdiction name or ID.
+        name: jurisdiction
+        in: query
+      - description: Return events marked as deleted?
+        required: false
+        schema:
+          title: Deleted
+          type: boolean
+          description: Return events marked as deleted?
+          default: false
+        name: deleted
+        in: query
+      - description: Limit results to those starting before a given datetime.
+        required: false
+        schema:
+          title: Before
+          type: string
+          description: Limit results to those starting before a given datetime.
+        name: before
+        in: query
+      - description: Limit results to those starting after a given datetime.
+        required: false
+        schema:
+          title: After
+          type: string
+          description: Limit results to those starting after a given datetime.
+        name: after
+        in: query
+      - description: Limit results to events with associated bills.
+        required: false
+        schema:
+          title: Require Bills
+          type: boolean
+          description: Limit results to events with associated bills.
+          default: false
+        name: require_bills
+        in: query
+      - description: Additional includes for the Event response.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventInclude'
+          description: Additional includes for the Event response.
+          default: []
+        name: include
+        in: query
+      - required: false
+        schema:
+          title: Apikey
+          type: string
+        name: apikey
+        in: query
+      - required: false
+        schema:
+          title: Page
+          type: integer
+          default: 1
+        name: page
+        in: query
+      - required: false
+        schema:
+          title: Per Page
+          type: integer
+          default: 20
+        name: per_page
+        in: query
+      - required: false
+        schema:
+          title: X-Api-Key
+          type: string
+        name: x-api-key
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventList'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /events/{event_id}:
+    get:
+      tags:
+      - events
+      summary: Event Detail
+      description: Get details on a single event by ID.
+      operationId: event_detail_events__event_id__get
+      parameters:
+      - required: true
+        schema:
+          title: Event Id
+          type: string
+        name: event_id
+        in: path
+      - description: Additional includes for the Event response.
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventInclude'
+          description: Additional includes for the Event response.
+          default: []
+        name: include
+        in: query
+      - required: false
+        schema:
+          title: Apikey
+          type: string
+        name: apikey
+        in: query
+      - required: false
+        schema:
+          title: X-Api-Key
+          type: string
+        name: x-api-key
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Link:
+      title: Link
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
+        note:
+          title: Note
+          type: string
+          example: homepage
+    EventMedia:
+      title: EventMedia
+      required:
+      - note
+      - date
+      - classification
+      - links
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+        date:
+          title: Date
+          type: string
+        offset:
+          title: Offset
+          type: integer
+        classification:
+          title: Classification
+          type: string
+        links:
+          title: Links
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    CompactVoteEvent:
+      title: CompactVoteEvent
+      required:
+      - id
+      - motion_text
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-vote/12345678-0000-1111-2222-333344445555
+        motion_text:
+          title: Motion Text
+          type: string
+          example: Shall the bill be passed?
+    Event:
+      title: Event
+      required:
+      - id
+      - name
+      - jurisdiction
+      - description
+      - classification
+      - start_date
+      - end_date
+      - all_day
+      - status
+      - upstream_id
+      - deleted
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+        jurisdiction:
+          $ref: '#/components/schemas/CompactJurisdiction'
+        description:
+          title: Description
+          type: string
+        classification:
+          title: Classification
+          type: string
+        start_date:
+          title: Start Date
+          type: string
+        end_date:
+          title: End Date
+          type: string
+        all_day:
+          title: All Day
+          type: boolean
+        status:
+          title: Status
+          type: string
+        upstream_id:
+          title: Upstream Id
+          type: string
+        deleted:
+          title: Deleted
+          type: boolean
+        location:
+          $ref: '#/components/schemas/EventLocation'
+        links:
+          title: Links
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+        sources:
+          title: Sources
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+        media:
+          title: Media
+          type: array
+          items:
+            $ref: '#/components/schemas/EventMedia'
+        documents:
+          title: Documents
+          type: array
+          items:
+            $ref: '#/components/schemas/EventDocument'
+        participants:
+          title: Participants
+          type: array
+          items:
+            $ref: '#/components/schemas/EventParticipant'
+        agenda:
+          title: Agenda
+          type: array
+          items:
+            $ref: '#/components/schemas/EventAgendaItem'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    EventRelatedEntity:
+      title: EventRelatedEntity
+      required:
+      - note
+      - name
+      - entity_type
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+        name:
+          title: Name
+          type: string
+          example: JONES
+        entity_type:
+          title: Entity Type
+          type: string
+          example: person
+        organization:
+          title: Organization
+          allOf:
+          - $ref: '#/components/schemas/Organization'
+        person:
+          $ref: '#/components/schemas/CompactPerson'
+        bill:
+          $ref: '#/components/schemas/CompactBill'
+        vote:
+          $ref: '#/components/schemas/CompactVoteEvent'
+    EventParticipant:
+      title: EventParticipant
+      required:
+      - note
+      - name
+      - entity_type
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+        name:
+          title: Name
+          type: string
+          example: JONES
+        entity_type:
+          title: Entity Type
+          type: string
+          example: person
+        organization:
+          title: Organization
+          allOf:
+          - $ref: '#/components/schemas/Organization'
+        person:
+          $ref: '#/components/schemas/CompactPerson'
+    PaginationMeta:
+      title: PaginationMeta
+      required:
+      - per_page
+      - page
+      - max_page
+      - total_items
+      type: object
+      properties:
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
+    EventInclude:
+      title: EventInclude
+      enum:
+      - links
+      - sources
+      - media
+      - documents
+      - participants
+      - agenda
+      type: string
+      description: An enumeration.
+    CompactJurisdiction:
+      title: CompactJurisdiction
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-jurisdiction/country:us/state:nc/government
+        name:
+          title: Name
+          type: string
+          example: North Carolina
+        classification:
+          allOf:
+          - $ref: '#/components/schemas/JurisdictionClassification'
+          example: state
+    CurrentRole:
+      title: CurrentRole
+      required:
+      - title
+      - org_classification
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          example: Senator
+        org_classification:
+          allOf:
+          - $ref: '#/components/schemas/OrgClassification'
+          example: upper
+        district:
+          title: District
+          anyOf:
+          - type: string
+          - type: integer
+          default: ''
+          example: 3
+        division_id:
+          title: Division Id
+          type: string
+          default: ''
+          example: ocd-division/country:us/state:nc/sldu:3
+    EventList:
+      title: EventList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    CompactBill:
+      title: CompactBill
+      required:
+      - id
+      - session
+      - identifier
+      - title
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-bill/12345678-0000-1111-2222-333344445555
+        session:
+          title: Session
+          type: string
+        identifier:
+          title: Identifier
+          type: string
+        title:
+          title: Title
+          type: string
+        other_identifiers:
+          title: Other Identifiers
+          type: array
+          items:
+            $ref: '#/components/schemas/BillIdentifier'
+    EventAgendaItem:
+      title: EventAgendaItem
+      required:
+      - description
+      - classification
+      - order
+      - subjects
+      - notes
+      - extras
+      - related_entities
+      - media
+      type: object
+      properties:
+        description:
+          title: Description
+          type: string
+        classification:
+          title: Classification
+          type: array
+          items:
+            type: string
+        order:
+          title: Order
+          type: integer
+        subjects:
+          title: Subjects
+          type: array
+          items:
+            type: string
+        notes:
+          title: Notes
+          type: array
+          items:
+            type: string
+        extras:
+          title: Extras
+          type: object
+        related_entities:
+          title: Related Entities
+          type: array
+          items:
+            $ref: '#/components/schemas/EventRelatedEntity'
+        media:
+          title: Media
+          type: array
+          items:
+            $ref: '#/components/schemas/EventMedia'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    OrgClassification:
+      title: OrgClassification
+      enum:
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
+      type: string
+      description: An enumeration.
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
+    CompactPerson:
+      title: CompactPerson
+      required:
+      - id
+      - name
+      - party
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
+        name:
+          title: Name
+          type: string
+          example: Angela Augusta
+        party:
+          title: Party
+          type: string
+          example: Democratic
+        current_role:
+          $ref: '#/components/schemas/CurrentRole'
+    BillIdentifier:
+      title: BillIdentifier
+      required:
+      - identifier
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+          example: ocd-bill-mn-2025_2026-sf827
+    EventLocation:
+      title: EventLocation
+      required:
+      - name
+      - url
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+    EventDocument:
+      title: EventDocument
+      required:
+      - note
+      - date
+      - classification
+      - links
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+        date:
+          title: Date
+          type: string
+        classification:
+          title: Classification
+          type: string
+        links:
+          title: Links
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Organization:
+      title: Organization
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
+        name:
+          title: Name
+          type: string
+          example: North Carolina General Assembly
+        classification:
+          title: Classification
+          type: string
+          example: legislature

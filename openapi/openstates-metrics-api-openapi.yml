@@ -1,0 +1,39 @@
+openapi: 3.0.2
+info:
+  title: Open States API v3 bills Metrics API
+  description: '
+
+    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
+
+    * [Register for an account](https://openstates.org/accounts/signup/)
+
+
+
+    **We are currently working to restore experimental support for committees & events.**
+
+
+    During this period please note that data is not yet available for all states
+
+    and the exact format of the new endpoints may change slightly depending on user feedback.
+
+
+    If you have any issues or questions use our
+
+    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+  version: 2021.11.12
+tags:
+- name: Metrics
+paths:
+  /metrics:
+    get:
+      summary: Metrics
+      description: Endpoint that serves Prometheus metrics.
+      operationId: metrics_metrics_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Metrics

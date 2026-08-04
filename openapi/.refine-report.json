@@ -1,0 +1,24 @@
+{
+  "provider": "openstates",
+  "sources": [
+    "openstates-bills-api-openapi.yml",
+    "openstates-committees-api-openapi.yml",
+    "openstates-events-api-openapi.yml",
+    "openstates-jurisdictions-api-openapi.yml",
+    "openstates-metrics-api-openapi.yml",
+    "openstates-people-api-openapi.yml"
+  ],
+  "outputs": [
+    "openstates-bills-api-openapi.yml",
+    "openstates-committees-api-openapi.yml",
+    "openstates-events-api-openapi.yml",
+    "openstates-jurisdictions-api-openapi.yml",
+    "openstates-metrics-api-openapi.yml",
+    "openstates-people-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

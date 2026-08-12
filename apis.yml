@@ -169,6 +169,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 common:
+- type: License
+  name: MIT
+  url: https://github.com/openstates/api-v3/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/openstates-agentic-access.yml
 - type: DomainSecurity

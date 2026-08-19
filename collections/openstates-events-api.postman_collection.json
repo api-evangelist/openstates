@@ -1,0 +1,430 @@
+{
+  "item": [
+    {
+      "id": "fc0f0013-4b44-4f5e-a4b5-870926dbce60",
+      "name": "events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "328065b2-0877-45cd-835e-9d3e0d1f4027",
+          "name": "Event List",
+          "request": {
+            "name": "Event List",
+            "description": {},
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "jurisdiction",
+                  "value": "<string>",
+                  "description": "Filter by jurisdiction name or ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted",
+                  "value": "false",
+                  "description": "Return events marked as deleted?"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>",
+                  "description": "Limit results to those starting before a given datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Limit results to those starting after a given datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "require_bills",
+                  "value": "false",
+                  "description": "Limit results to events with associated bills."
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c530f08-0758-4709-a70d-d6bcc1467249",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "require_bills",
+                      "value": "false"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"description\": \"string\",\n      \"classification\": \"string\",\n      \"start_date\": \"string\",\n      \"end_date\": \"string\",\n      \"all_day\": false,\n      \"status\": \"string\",\n      \"upstream_id\": \"string\",\n      \"deleted\": false,\n      \"location\": {\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"media\": [\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 8388\n        },\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 1530\n        }\n      ],\n      \"documents\": [\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"participants\": [\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"agenda\": [\n        {\n          \"description\": \"string\",\n          \"classification\": [\n            \"string\",\n            \"string\"\n          ],\n          \"order\": 8829,\n          \"subjects\": [\n            \"string\",\n            \"string\"\n          ],\n          \"notes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extras\": {},\n          \"related_entities\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"description\": \"string\",\n          \"classification\": [\n            \"string\",\n            \"string\"\n          ],\n          \"order\": 145,\n          \"subjects\": [\n            \"string\",\n            \"string\"\n          ],\n          \"notes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extras\": {},\n          \"related_entities\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"description\": \"string\",\n      \"classification\": \"string\",\n      \"start_date\": \"string\",\n      \"end_date\": \"string\",\n      \"all_day\": true,\n      \"status\": \"string\",\n      \"upstream_id\": \"string\",\n      \"deleted\": true,\n      \"location\": {\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"media\": [\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 8212\n        },\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 9332\n        }\n      ],\n      \"documents\": [\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"participants\": [\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"agenda\": [\n        {\n          \"description\": \"string\",\n          \"classification\": [\n            \"string\",\n            \"string\"\n          ],\n          \"order\": 2285,\n          \"subjects\": [\n            \"string\",\n            \"string\"\n          ],\n          \"notes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extras\": {},\n          \"related_entities\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"description\": \"string\",\n          \"classification\": [\n            \"string\",\n            \"string\"\n          ],\n          \"order\": 9324,\n          \"subjects\": [\n            \"string\",\n            \"string\"\n          ],\n          \"notes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extras\": {},\n          \"related_entities\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bill\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vote\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": [\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"links\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offset\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"per_page\": 20,\n    \"page\": 1,\n    \"max_page\": 3,\n    \"total_items\": 52\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "880e22bf-41e5-4c69-928c-bdd279136ad9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "require_bills",
+                      "value": "false"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9fed068-5e7f-4c0c-8cbf-de1129075970",
+          "name": "Event Detail",
+          "request": {
+            "name": "Event Detail",
+            "description": {
+              "content": "Get details on a single event by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":event_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac74714a-8258-4dc5-841d-88f686537756",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"jurisdiction\": {\n    \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n    \"name\": \"North Carolina\",\n    \"classification\": \"state\"\n  },\n  \"description\": \"string\",\n  \"classification\": \"string\",\n  \"start_date\": \"string\",\n  \"end_date\": \"string\",\n  \"all_day\": true,\n  \"status\": \"string\",\n  \"upstream_id\": \"string\",\n  \"deleted\": true,\n  \"location\": {\n    \"name\": \"string\",\n    \"url\": \"string\"\n  },\n  \"links\": [\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    },\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    }\n  ],\n  \"sources\": [\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    },\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    }\n  ],\n  \"media\": [\n    {\n      \"note\": \"string\",\n      \"date\": \"string\",\n      \"classification\": \"string\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"offset\": 8837\n    },\n    {\n      \"note\": \"string\",\n      \"date\": \"string\",\n      \"classification\": \"string\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"offset\": 6030\n    }\n  ],\n  \"documents\": [\n    {\n      \"note\": \"string\",\n      \"date\": \"string\",\n      \"classification\": \"string\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ]\n    },\n    {\n      \"note\": \"string\",\n      \"date\": \"string\",\n      \"classification\": \"string\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ]\n    }\n  ],\n  \"participants\": [\n    {\n      \"note\": \"string\",\n      \"name\": \"JONES\",\n      \"entity_type\": \"person\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"person\": {\n        \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n        \"name\": \"Angela Augusta\",\n        \"party\": \"Democratic\",\n        \"current_role\": {\n          \"title\": \"Senator\",\n          \"org_classification\": \"upper\",\n          \"district\": \"string\",\n          \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n        }\n      }\n    },\n    {\n      \"note\": \"string\",\n      \"name\": \"JONES\",\n      \"entity_type\": \"person\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"person\": {\n        \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n        \"name\": \"Angela Augusta\",\n        \"party\": \"Democratic\",\n        \"current_role\": {\n          \"title\": \"Senator\",\n          \"org_classification\": \"upper\",\n          \"district\": \"string\",\n          \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n        }\n      }\n    }\n  ],\n  \"agenda\": [\n    {\n      \"description\": \"string\",\n      \"classification\": [\n        \"string\",\n        \"string\"\n      ],\n      \"order\": 3761,\n      \"subjects\": [\n        \"string\",\n        \"string\"\n      ],\n      \"notes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extras\": {},\n      \"related_entities\": [\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bill\": {\n            \"id\": \"ocd-bill/12345678-0000-1111-2222-333344445555\",\n            \"session\": \"string\",\n            \"identifier\": \"string\",\n            \"title\": \"string\",\n            \"other_identifiers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"vote\": {\n            \"id\": \"ocd-vote/12345678-0000-1111-2222-333344445555\",\n            \"motion_text\": \"Shall the bill be passed?\"\n          }\n        },\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bill\": {\n            \"id\": \"ocd-bill/12345678-0000-1111-2222-333344445555\",\n            \"session\": \"string\",\n            \"identifier\": \"string\",\n            \"title\": \"string\",\n            \"other_identifiers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"vote\": {\n            \"id\": \"ocd-vote/12345678-0000-1111-2222-333344445555\",\n            \"motion_text\": \"Shall the bill be passed?\"\n          }\n        }\n      ],\n      \"media\": [\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 7587\n        },\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 4894\n        }\n      ]\n    },\n    {\n      \"description\": \"string\",\n      \"classification\": [\n        \"string\",\n        \"string\"\n      ],\n      \"order\": 5299,\n      \"subjects\": [\n        \"string\",\n        \"string\"\n      ],\n      \"notes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extras\": {},\n      \"related_entities\": [\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bill\": {\n            \"id\": \"ocd-bill/12345678-0000-1111-2222-333344445555\",\n            \"session\": \"string\",\n            \"identifier\": \"string\",\n            \"title\": \"string\",\n            \"other_identifiers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"vote\": {\n            \"id\": \"ocd-vote/12345678-0000-1111-2222-333344445555\",\n            \"motion_text\": \"Shall the bill be passed?\"\n          }\n        },\n        {\n          \"note\": \"string\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bill\": {\n            \"id\": \"ocd-bill/12345678-0000-1111-2222-333344445555\",\n            \"session\": \"string\",\n            \"identifier\": \"string\",\n            \"title\": \"string\",\n            \"other_identifiers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"vote\": {\n            \"id\": \"ocd-vote/12345678-0000-1111-2222-333344445555\",\n            \"motion_text\": \"Shall the bill be passed?\"\n          }\n        }\n      ],\n      \"media\": [\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 6076\n        },\n        {\n          \"note\": \"string\",\n          \"date\": \"string\",\n          \"classification\": \"string\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"offset\": 227\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6326aa3a-137b-47ef-898f-e8e87aa72884",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b019ada2-35bf-4012-a40c-2133cb7d0718",
+    "name": "Open States API v3 bills events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n* [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)\n* [Register for an account](https://openstates.org/accounts/signup/)\n\n\n**We are currently working to restore experimental support for committees & events.**\n\nDuring this period please note that data is not yet available for all states\nand the exact format of the new endpoints may change slightly depending on user feedback.\n\nIf you have any issues or questions use our\n[GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.",
+      "type": "text/plain"
+    }
+  }
+}

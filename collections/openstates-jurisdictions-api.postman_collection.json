@@ -1,0 +1,377 @@
+{
+  "item": [
+    {
+      "id": "6a38a319-05a6-4e70-9de7-2e2019bca4e0",
+      "name": "jurisdictions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8500bf0f-8948-465f-8a6b-cddab6faa782",
+          "name": "Jurisdiction List",
+          "request": {
+            "name": "Jurisdiction List",
+            "description": {
+              "content": "Get list of supported Jurisdictions, a Jurisdiction is a state or municipality.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jurisdictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "classification",
+                  "value": "<string>",
+                  "description": "Filter returned jurisdictions by type."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "52"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6f1687c-191a-47d9-84b5-4db6e8301a60",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jurisdictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "52"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n      \"name\": \"North Carolina\",\n      \"classification\": \"state\",\n      \"url\": \"https://nc.gov\",\n      \"latest_bill_update\": \"2020-05-15T20:06:16.693Z\",\n      \"latest_people_update\": \"1991-12-13T14:38:19.419Z\",\n      \"division_id\": \"ocd-division/country:us/state:nc\",\n      \"organizations\": [\n        {\n          \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n          \"name\": \"North Carolina General Assembly\",\n          \"classification\": \"legislature\",\n          \"districts\": [\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n          \"name\": \"North Carolina General Assembly\",\n          \"classification\": \"legislature\",\n          \"districts\": [\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"legislative_sessions\": [\n        {\n          \"identifier\": \"string\",\n          \"name\": \"string\",\n          \"classification\": \"string\",\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"downloads\": [\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"identifier\": \"string\",\n          \"name\": \"string\",\n          \"classification\": \"string\",\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"downloads\": [\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"latest_runs\": [\n        {\n          \"success\": false,\n          \"start_time\": \"1958-07-19T22:26:30.123Z\",\n          \"end_time\": \"2003-10-07T11:22:55.776Z\"\n        },\n        {\n          \"success\": false,\n          \"start_time\": \"1961-07-12T13:47:27.707Z\",\n          \"end_time\": \"1962-11-24T13:21:29.133Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n      \"name\": \"North Carolina\",\n      \"classification\": \"state\",\n      \"url\": \"https://nc.gov\",\n      \"latest_bill_update\": \"1955-08-26T09:45:44.966Z\",\n      \"latest_people_update\": \"1955-02-24T03:25:44.777Z\",\n      \"division_id\": \"ocd-division/country:us/state:nc\",\n      \"organizations\": [\n        {\n          \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n          \"name\": \"North Carolina General Assembly\",\n          \"classification\": \"legislature\",\n          \"districts\": [\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n          \"name\": \"North Carolina General Assembly\",\n          \"classification\": \"legislature\",\n          \"districts\": [\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"role\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"division_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum_memberships\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"legislative_sessions\": [\n        {\n          \"identifier\": \"string\",\n          \"name\": \"string\",\n          \"classification\": \"string\",\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"downloads\": [\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"identifier\": \"string\",\n          \"name\": \"string\",\n          \"classification\": \"string\",\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"downloads\": [\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"created_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"latest_runs\": [\n        {\n          \"success\": false,\n          \"start_time\": \"2024-10-02T16:48:42.273Z\",\n          \"end_time\": \"1967-10-22T22:57:03.599Z\"\n        },\n        {\n          \"success\": true,\n          \"start_time\": \"1992-11-17T22:24:25.666Z\",\n          \"end_time\": \"1953-08-18T11:57:08.576Z\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"per_page\": 20,\n    \"page\": 1,\n    \"max_page\": 3,\n    \"total_items\": 52\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecbd8fc8-53f6-4d2b-b366-c302e986422f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jurisdictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "52"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa4ef83d-4263-4bde-9f54-1aea0464eaf6",
+          "name": "Jurisdiction Detail",
+          "request": {
+            "name": "Jurisdiction Detail",
+            "description": {
+              "content": "Get details on a single Jurisdiction (e.g. state or municipality).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jurisdictions",
+                ":jurisdiction_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jurisdiction_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32d3e928-b17d-4bd7-9e50-fb23fb3d8609",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jurisdictions",
+                    ":jurisdiction_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jurisdiction_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n  \"name\": \"North Carolina\",\n  \"classification\": \"state\",\n  \"url\": \"https://nc.gov\",\n  \"latest_bill_update\": \"2006-11-12T11:29:40.003Z\",\n  \"latest_people_update\": \"1969-05-30T07:34:53.146Z\",\n  \"division_id\": \"ocd-division/country:us/state:nc\",\n  \"organizations\": [\n    {\n      \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n      \"name\": \"North Carolina General Assembly\",\n      \"classification\": \"legislature\",\n      \"districts\": [\n        {\n          \"label\": \"2\",\n          \"role\": \"Senator\",\n          \"division_id\": \"ocd-division/country:us/state:mn/sldu:4\",\n          \"maximum_memberships\": 1\n        },\n        {\n          \"label\": \"2\",\n          \"role\": \"Senator\",\n          \"division_id\": \"ocd-division/country:us/state:mn/sldu:4\",\n          \"maximum_memberships\": 1\n        }\n      ]\n    },\n    {\n      \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n      \"name\": \"North Carolina General Assembly\",\n      \"classification\": \"legislature\",\n      \"districts\": [\n        {\n          \"label\": \"2\",\n          \"role\": \"Senator\",\n          \"division_id\": \"ocd-division/country:us/state:mn/sldu:4\",\n          \"maximum_memberships\": 1\n        },\n        {\n          \"label\": \"2\",\n          \"role\": \"Senator\",\n          \"division_id\": \"ocd-division/country:us/state:mn/sldu:4\",\n          \"maximum_memberships\": 1\n        }\n      ]\n    }\n  ],\n  \"legislative_sessions\": [\n    {\n      \"identifier\": \"string\",\n      \"name\": \"string\",\n      \"classification\": \"string\",\n      \"start_date\": \"string\",\n      \"end_date\": \"string\",\n      \"downloads\": [\n        {\n          \"created_at\": \"1958-09-07T09:30:21.306Z\",\n          \"updated_at\": \"1980-01-05T17:56:18.107Z\",\n          \"data_type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"created_at\": \"1961-12-22T13:22:21.536Z\",\n          \"updated_at\": \"2017-01-03T10:33:14.191Z\",\n          \"data_type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    },\n    {\n      \"identifier\": \"string\",\n      \"name\": \"string\",\n      \"classification\": \"string\",\n      \"start_date\": \"string\",\n      \"end_date\": \"string\",\n      \"downloads\": [\n        {\n          \"created_at\": \"1981-07-16T05:48:38.156Z\",\n          \"updated_at\": \"2000-10-08T04:57:11.869Z\",\n          \"data_type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"created_at\": \"1951-02-16T06:27:43.011Z\",\n          \"updated_at\": \"1981-12-11T12:38:18.191Z\",\n          \"data_type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"latest_runs\": [\n    {\n      \"success\": true,\n      \"start_time\": \"1964-08-23T21:43:18.258Z\",\n      \"end_time\": \"2009-08-07T18:44:06.870Z\"\n    },\n    {\n      \"success\": false,\n      \"start_time\": \"1997-09-10T17:57:19.382Z\",\n      \"end_time\": \"1966-10-01T09:39:37.936Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7418e1e-56a1-4a90-b942-2f614c60470f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jurisdictions",
+                    ":jurisdiction_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jurisdiction_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "455d6725-05f0-4f20-812a-a536747a7c1c",
+    "name": "Open States API v3 bills jurisdictions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n* [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)\n* [Register for an account](https://openstates.org/accounts/signup/)\n\n\n**We are currently working to restore experimental support for committees & events.**\n\nDuring this period please note that data is not yet available for all states\nand the exact format of the new endpoints may change slightly depending on user feedback.\n\nIf you have any issues or questions use our\n[GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.",
+      "type": "text/plain"
+    }
+  }
+}

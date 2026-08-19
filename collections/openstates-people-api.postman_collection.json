@@ -1,0 +1,420 @@
+{
+  "item": [
+    {
+      "id": "4df22d7d-4866-4762-9467-6acb37516859",
+      "name": "people",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e42284f5-c7ce-4422-9823-8a98e731b72e",
+          "name": "People Search",
+          "request": {
+            "name": "People Search",
+            "description": {
+              "content": "Get list of people matching selected criteria.\n\nMust provide either **jurisdiction**, **name**, or one or more **id** parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "jurisdiction",
+                  "value": "<string>",
+                  "description": "Filter by jurisdiction name or id."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by name, case-insensitive match."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_classification",
+                  "value": "<string>",
+                  "description": "Filter by current role."
+                },
+                {
+                  "disabled": false,
+                  "key": "district",
+                  "value": "<string>",
+                  "description": "Filter by district name."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64ba6044-5217-4580-a961-b436bea96b7b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "district",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n      \"name\": \"Angela Augusta\",\n      \"party\": \"Democratic\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"given_name\": \"Angela\",\n      \"family_name\": \"Augusta\",\n      \"image\": \"https://example.com/ncimg/3.png\",\n      \"email\": \"aperson@example.com\",\n      \"gender\": \"female\",\n      \"birth_date\": \"1960-05-04\",\n      \"death_date\": \"2019-04-10\",\n      \"extras\": {\n        \"profession\": \"Doctor\"\n      },\n      \"created_at\": \"1970-03-18T12:19:17.587Z\",\n      \"updated_at\": \"1999-04-13T00:41:00.388Z\",\n      \"openstates_url\": \"https://openstates.org/person/amos-l-quick-iii-28NRPPfJA6FGVl9RrjpKjl/\",\n      \"current_role\": {\n        \"title\": \"Senator\",\n        \"org_classification\": \"upper\",\n        \"district\": \"string\",\n        \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n      },\n      \"other_identifiers\": [\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        },\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        }\n      ],\n      \"other_names\": [\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        },\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        }\n      ],\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"offices\": [\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        },\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        }\n      ]\n    },\n    {\n      \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n      \"name\": \"Angela Augusta\",\n      \"party\": \"Democratic\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"given_name\": \"Angela\",\n      \"family_name\": \"Augusta\",\n      \"image\": \"https://example.com/ncimg/3.png\",\n      \"email\": \"aperson@example.com\",\n      \"gender\": \"female\",\n      \"birth_date\": \"1960-05-04\",\n      \"death_date\": \"2019-04-10\",\n      \"extras\": {\n        \"profession\": \"Doctor\"\n      },\n      \"created_at\": \"1996-01-05T19:40:44.427Z\",\n      \"updated_at\": \"1982-08-14T15:01:13.170Z\",\n      \"openstates_url\": \"https://openstates.org/person/amos-l-quick-iii-28NRPPfJA6FGVl9RrjpKjl/\",\n      \"current_role\": {\n        \"title\": \"Senator\",\n        \"org_classification\": \"upper\",\n        \"district\": \"string\",\n        \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n      },\n      \"other_identifiers\": [\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        },\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        }\n      ],\n      \"other_names\": [\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        },\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        }\n      ],\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"offices\": [\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        },\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"per_page\": 20,\n    \"page\": 1,\n    \"max_page\": 3,\n    \"total_items\": 52\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "071788c5-b023-47fa-8add-f47004d7042e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "district",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59b4b613-f237-4fac-8c1f-2449b4630f46",
+          "name": "People Geo",
+          "request": {
+            "name": "People Geo",
+            "description": {
+              "content": "Get list of people currently representing a given location.\n\n**Note:** Currently limited to state legislators and US Congress.  Governors & mayors are not included.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "people.geo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "(Required) Latitude of point."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "<number>",
+                  "description": "(Required) Longitude of point."
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4a7f996-afdc-4e95-ab53-7b93dbb8d931",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people.geo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n      \"name\": \"Angela Augusta\",\n      \"party\": \"Democratic\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"given_name\": \"Angela\",\n      \"family_name\": \"Augusta\",\n      \"image\": \"https://example.com/ncimg/3.png\",\n      \"email\": \"aperson@example.com\",\n      \"gender\": \"female\",\n      \"birth_date\": \"1960-05-04\",\n      \"death_date\": \"2019-04-10\",\n      \"extras\": {\n        \"profession\": \"Doctor\"\n      },\n      \"created_at\": \"1951-07-06T14:58:47.376Z\",\n      \"updated_at\": \"1956-06-21T16:15:11.472Z\",\n      \"openstates_url\": \"https://openstates.org/person/amos-l-quick-iii-28NRPPfJA6FGVl9RrjpKjl/\",\n      \"current_role\": {\n        \"title\": \"Senator\",\n        \"org_classification\": \"upper\",\n        \"district\": \"string\",\n        \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n      },\n      \"other_identifiers\": [\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        },\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        }\n      ],\n      \"other_names\": [\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        },\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        }\n      ],\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"offices\": [\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        },\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        }\n      ]\n    },\n    {\n      \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n      \"name\": \"Angela Augusta\",\n      \"party\": \"Democratic\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"given_name\": \"Angela\",\n      \"family_name\": \"Augusta\",\n      \"image\": \"https://example.com/ncimg/3.png\",\n      \"email\": \"aperson@example.com\",\n      \"gender\": \"female\",\n      \"birth_date\": \"1960-05-04\",\n      \"death_date\": \"2019-04-10\",\n      \"extras\": {\n        \"profession\": \"Doctor\"\n      },\n      \"created_at\": \"1984-02-18T11:08:04.909Z\",\n      \"updated_at\": \"2002-07-11T14:19:54.759Z\",\n      \"openstates_url\": \"https://openstates.org/person/amos-l-quick-iii-28NRPPfJA6FGVl9RrjpKjl/\",\n      \"current_role\": {\n        \"title\": \"Senator\",\n        \"org_classification\": \"upper\",\n        \"district\": \"string\",\n        \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n      },\n      \"other_identifiers\": [\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        },\n        {\n          \"identifier\": \"NCL000123\",\n          \"scheme\": \"legacy_openstates\"\n        }\n      ],\n      \"other_names\": [\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        },\n        {\n          \"name\": \"Auggie\",\n          \"note\": \"nickname\"\n        }\n      ],\n      \"links\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"offices\": [\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        },\n        {\n          \"name\": \"District Office\",\n          \"fax\": \"919-555-1234\",\n          \"voice\": \"919-555-0064\",\n          \"address\": \"212 Maple Lane; Raleigh NC; 27526\",\n          \"classification\": \"capitol\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"per_page\": 20,\n    \"page\": 1,\n    \"max_page\": 3,\n    \"total_items\": 52\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4bdebd1-3648-46a3-877f-774bde837e8b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people.geo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "218ea13c-ae26-408a-8bd1-0a12313f95a5",
+    "name": "Open States API v3 bills people API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n* [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)\n* [Register for an account](https://openstates.org/accounts/signup/)\n\n\n**We are currently working to restore experimental support for committees & events.**\n\nDuring this period please note that data is not yet available for all states\nand the exact format of the new endpoints may change slightly depending on user feedback.\n\nIf you have any issues or questions use our\n[GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.",
+      "type": "text/plain"
+    }
+  }
+}

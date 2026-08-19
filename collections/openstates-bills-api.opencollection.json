@@ -1,0 +1,214 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open States API v3 bills API",
+    "version": "2021.11.12"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bills",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bills Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/bills",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jurisdiction",
+                "value": "",
+                "type": "query",
+                "description": "Filter by jurisdiction name or ID."
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "query",
+                "description": "Filter by session identifier."
+              },
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "query",
+                "description": "Filter by chamber of origination."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only include bills with this identifier."
+              },
+              {
+                "name": "classification",
+                "value": "",
+                "type": "query",
+                "description": "Filter by classification, e.g. bill or resolution"
+              },
+              {
+                "name": "subject",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more subjects."
+              },
+              {
+                "name": "updated_since",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only include bills with updates since a given date."
+              },
+              {
+                "name": "created_since",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only include bills created since a given date."
+              },
+              {
+                "name": "action_since",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only include bills with an action since a given date."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Desired sort order for bill results."
+              },
+              {
+                "name": "sponsor",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only include bills sponsored by a given name or person ID."
+              },
+              {
+                "name": "sponsor_classification",
+                "value": "",
+                "type": "query",
+                "description": "Filter matched sponsors to only include particular types of sponsorships."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full text search term."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Additional information to include in response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for bills matching given criteria.\n\nMust either specify a jurisdiction or a full text query (q).  Additional parameters will further restrict bills returned."
+        },
+        {
+          "info": {
+            "name": "Bill Detail By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/bills/ocd-bill/:openstates_bill_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "openstates_bill_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Obtain bill information by internal ID in the format ocd-bill/*uuid*."
+        },
+        {
+          "info": {
+            "name": "Bill Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/bills/:jurisdiction/:session/:bill_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jurisdiction",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bill_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Obtain bill information based on (state, session, bill_id)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

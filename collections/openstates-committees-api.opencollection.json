@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open States API v3 bills committees API",
+    "version": "2021.11.12"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "committees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Committee List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/committees",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jurisdiction",
+                "value": "",
+                "type": "query",
+                "description": "Filter by jurisdiction name or ID."
+              },
+              {
+                "name": "classification",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parent",
+                "value": "",
+                "type": "query",
+                "description": "ocd-organization ID of parent committee."
+              },
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "query",
+                "description": "Chamber of committee, generally upper or lower."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Additional includes for the Committee response."
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Committee List"
+        },
+        {
+          "info": {
+            "name": "Committee Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/committees/:committee_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "committee_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Additional includes for the Committee response."
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get details on a single committee by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

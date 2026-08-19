@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "0f5c5572-e85f-4216-86d1-cbcbf53dd340",
+      "name": "Metrics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "273336e1-8f1d-4707-8260-0ecf0e1fa74d",
+          "name": "Metrics",
+          "request": {
+            "name": "Metrics",
+            "description": {
+              "content": "Endpoint that serves Prometheus metrics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec8bdb10-a35d-4273-afd3-9705e03b1154",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "545b9e26-5796-47d5-beeb-2c326c183387",
+    "name": "Open States API v3 bills Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n* [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)\n* [Register for an account](https://openstates.org/accounts/signup/)\n\n\n**We are currently working to restore experimental support for committees & events.**\n\nDuring this period please note that data is not yet available for all states\nand the exact format of the new endpoints may change slightly depending on user feedback.\n\nIf you have any issues or questions use our\n[GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,734 @@
+{
+  "item": [
+    {
+      "id": "44501dd4-98ba-4c73-a517-df24b0d1da89",
+      "name": "bills",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac51dcaa-52cd-4eaa-94f3-2fdc935f2423",
+          "name": "Bills Search",
+          "request": {
+            "name": "Bills Search",
+            "description": {
+              "content": "Search for bills matching given criteria.\n\nMust either specify a jurisdiction or a full text query (q).  Additional parameters will further restrict bills returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "jurisdiction",
+                  "value": "<string>",
+                  "description": "Filter by jurisdiction name or ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "session",
+                  "value": "<string>",
+                  "description": "Filter by session identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "chamber",
+                  "value": "<string>",
+                  "description": "Filter by chamber of origination."
+                },
+                {
+                  "disabled": false,
+                  "key": "classification",
+                  "value": "<string>",
+                  "description": "Filter by classification, e.g. bill or resolution"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_since",
+                  "value": "<string>",
+                  "description": "Filter to only include bills with updates since a given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_since",
+                  "value": "<string>",
+                  "description": "Filter to only include bills created since a given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "action_since",
+                  "value": "<string>",
+                  "description": "Filter to only include bills with an action since a given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "updated_desc",
+                  "description": "Desired sort order for bill results."
+                },
+                {
+                  "disabled": false,
+                  "key": "sponsor",
+                  "value": "<string>",
+                  "description": "Filter to only include bills sponsored by a given name or person ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "sponsor_classification",
+                  "value": "<string>",
+                  "description": "Filter matched sponsors to only include particular types of sponsorships."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Filter by full text search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed0ada4f-9a31-46db-84fc-2050b8e2259a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chamber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updated_desc"
+                    },
+                    {
+                      "key": "sponsor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sponsor_classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"ocd-bill/f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"session\": \"2020\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"from_organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"identifier\": \"SB 113\",\n      \"title\": \"Adopting a State Scorpion\",\n      \"created_at\": \"1996-03-02T02:41:04.164Z\",\n      \"updated_at\": \"1984-03-03T01:34:21.471Z\",\n      \"openstates_url\": \"https://openstates.org/nc/bills/2019/HB1105/\",\n      \"classification\": [\n        \"resolution\"\n      ],\n      \"subject\": [\n        \"SCORPIONS\",\n        \"SYMBOLS\"\n      ],\n      \"extras\": {},\n      \"first_action_date\": \"2020-01-01\",\n      \"latest_action_date\": \"2020-02-01\",\n      \"latest_action_description\": \"Introduced in House\",\n      \"latest_passage_date\": \"2020-03-01\",\n      \"related_bills\": [\n        {\n          \"identifier\": \"HB 123\",\n          \"legislative_session\": \"2022S1\",\n          \"relation_type\": \"companion\"\n        },\n        {\n          \"identifier\": \"HB 123\",\n          \"legislative_session\": \"2022S1\",\n          \"relation_type\": \"companion\"\n        }\n      ],\n      \"abstracts\": [\n        {\n          \"abstract\": \"This bill designates a new state arachnid.\",\n          \"note\": \"house abstract\"\n        },\n        {\n          \"abstract\": \"This bill designates a new state arachnid.\",\n          \"note\": \"house abstract\"\n        }\n      ],\n      \"other_titles\": [\n        {\n          \"title\": \"Designating the scorpion as the state arachnid.\",\n          \"note\": \"short title\"\n        },\n        {\n          \"title\": \"Designating the scorpion as the state arachnid.\",\n          \"note\": \"short title\"\n        }\n      ],\n      \"other_identifiers\": [\n        {\n          \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n        },\n        {\n          \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n        }\n      ],\n      \"sponsorships\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"primary\": true,\n          \"classification\": \"primary\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"primary\": false,\n          \"classification\": \"primary\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"actions\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"description\": \"Passed 1st Reading\",\n          \"date\": \"2020-03-14\",\n          \"classification\": [\n            \"passed\"\n          ],\n          \"order\": 7117,\n          \"related_entities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"description\": \"Passed 1st Reading\",\n          \"date\": \"2020-03-14\",\n          \"classification\": [\n            \"passed\"\n          ],\n          \"order\": 6623,\n          \"related_entities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"versions\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"documents\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"votes\": [\n        {\n          \"id\": \"string\",\n          \"motion_text\": \"Shall the bill be passed?\",\n          \"start_date\": \"2020-09-18\",\n          \"result\": \"pass\",\n          \"identifier\": \"HV #3312\",\n          \"extras\": {},\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"votes\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"counts\": [\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sources\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"motion_classification\": [\n            \"passage\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"motion_text\": \"Shall the bill be passed?\",\n          \"start_date\": \"2020-09-18\",\n          \"result\": \"pass\",\n          \"identifier\": \"HV #3312\",\n          \"extras\": {},\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"votes\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"counts\": [\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sources\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"motion_classification\": [\n            \"passage\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"ocd-bill/f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"session\": \"2020\",\n      \"jurisdiction\": {\n        \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n        \"name\": \"North Carolina\",\n        \"classification\": \"state\"\n      },\n      \"from_organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"identifier\": \"SB 113\",\n      \"title\": \"Adopting a State Scorpion\",\n      \"created_at\": \"2010-03-19T02:28:49.384Z\",\n      \"updated_at\": \"1995-09-08T00:21:38.829Z\",\n      \"openstates_url\": \"https://openstates.org/nc/bills/2019/HB1105/\",\n      \"classification\": [\n        \"resolution\"\n      ],\n      \"subject\": [\n        \"SCORPIONS\",\n        \"SYMBOLS\"\n      ],\n      \"extras\": {},\n      \"first_action_date\": \"2020-01-01\",\n      \"latest_action_date\": \"2020-02-01\",\n      \"latest_action_description\": \"Introduced in House\",\n      \"latest_passage_date\": \"2020-03-01\",\n      \"related_bills\": [\n        {\n          \"identifier\": \"HB 123\",\n          \"legislative_session\": \"2022S1\",\n          \"relation_type\": \"companion\"\n        },\n        {\n          \"identifier\": \"HB 123\",\n          \"legislative_session\": \"2022S1\",\n          \"relation_type\": \"companion\"\n        }\n      ],\n      \"abstracts\": [\n        {\n          \"abstract\": \"This bill designates a new state arachnid.\",\n          \"note\": \"house abstract\"\n        },\n        {\n          \"abstract\": \"This bill designates a new state arachnid.\",\n          \"note\": \"house abstract\"\n        }\n      ],\n      \"other_titles\": [\n        {\n          \"title\": \"Designating the scorpion as the state arachnid.\",\n          \"note\": \"short title\"\n        },\n        {\n          \"title\": \"Designating the scorpion as the state arachnid.\",\n          \"note\": \"short title\"\n        }\n      ],\n      \"other_identifiers\": [\n        {\n          \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n        },\n        {\n          \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n        }\n      ],\n      \"sponsorships\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"primary\": false,\n          \"classification\": \"primary\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"name\": \"JONES\",\n          \"entity_type\": \"person\",\n          \"primary\": true,\n          \"classification\": \"primary\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"actions\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"description\": \"Passed 1st Reading\",\n          \"date\": \"2020-03-14\",\n          \"classification\": [\n            \"passed\"\n          ],\n          \"order\": 3948,\n          \"related_entities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"description\": \"Passed 1st Reading\",\n          \"date\": \"2020-03-14\",\n          \"classification\": [\n            \"passed\"\n          ],\n          \"order\": 7720,\n          \"related_entities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"entity_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"organization\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"versions\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"documents\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"note\": \"Latest Version\",\n          \"date\": \"2020-10-01\",\n          \"classification\": \"amendment\",\n          \"links\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"media_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"votes\": [\n        {\n          \"id\": \"string\",\n          \"motion_text\": \"Shall the bill be passed?\",\n          \"start_date\": \"2020-09-18\",\n          \"result\": \"pass\",\n          \"identifier\": \"HV #3312\",\n          \"extras\": {},\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"votes\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"counts\": [\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sources\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"motion_classification\": [\n            \"passage\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"motion_text\": \"Shall the bill be passed?\",\n          \"start_date\": \"2020-09-18\",\n          \"result\": \"pass\",\n          \"identifier\": \"HV #3312\",\n          \"extras\": {},\n          \"organization\": {\n            \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n            \"name\": \"North Carolina General Assembly\",\n            \"classification\": \"legislature\"\n          },\n          \"votes\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"voter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"counts\": [\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"option\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sources\": [\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"note\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"motion_classification\": [\n            \"passage\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"per_page\": 20,\n    \"page\": 1,\n    \"max_page\": 3,\n    \"total_items\": 52\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1baf6059-cd00-4351-970b-7b776e9d7716",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chamber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updated_desc"
+                    },
+                    {
+                      "key": "sponsor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sponsor_classification",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aa1e43e-903f-42ba-aec8-813d3c042d3c",
+          "name": "Bill Detail By Id",
+          "request": {
+            "name": "Bill Detail By Id",
+            "description": {
+              "content": "Obtain bill information by internal ID in the format ocd-bill/*uuid*.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                "ocd-bill",
+                ":openstates_bill_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "openstates_bill_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c80be8bc-280c-4196-a594-2f5c947da49f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    "ocd-bill",
+                    ":openstates_bill_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "openstates_bill_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ocd-bill/f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n  \"session\": \"2020\",\n  \"jurisdiction\": {\n    \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n    \"name\": \"North Carolina\",\n    \"classification\": \"state\"\n  },\n  \"from_organization\": {\n    \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n    \"name\": \"North Carolina General Assembly\",\n    \"classification\": \"legislature\"\n  },\n  \"identifier\": \"SB 113\",\n  \"title\": \"Adopting a State Scorpion\",\n  \"created_at\": \"1948-03-10T13:51:58.068Z\",\n  \"updated_at\": \"1978-06-24T23:19:59.629Z\",\n  \"openstates_url\": \"https://openstates.org/nc/bills/2019/HB1105/\",\n  \"classification\": [\n    \"resolution\"\n  ],\n  \"subject\": [\n    \"SCORPIONS\",\n    \"SYMBOLS\"\n  ],\n  \"extras\": {},\n  \"first_action_date\": \"2020-01-01\",\n  \"latest_action_date\": \"2020-02-01\",\n  \"latest_action_description\": \"Introduced in House\",\n  \"latest_passage_date\": \"2020-03-01\",\n  \"related_bills\": [\n    {\n      \"identifier\": \"HB 123\",\n      \"legislative_session\": \"2022S1\",\n      \"relation_type\": \"companion\"\n    },\n    {\n      \"identifier\": \"HB 123\",\n      \"legislative_session\": \"2022S1\",\n      \"relation_type\": \"companion\"\n    }\n  ],\n  \"abstracts\": [\n    {\n      \"abstract\": \"This bill designates a new state arachnid.\",\n      \"note\": \"house abstract\"\n    },\n    {\n      \"abstract\": \"This bill designates a new state arachnid.\",\n      \"note\": \"house abstract\"\n    }\n  ],\n  \"other_titles\": [\n    {\n      \"title\": \"Designating the scorpion as the state arachnid.\",\n      \"note\": \"short title\"\n    },\n    {\n      \"title\": \"Designating the scorpion as the state arachnid.\",\n      \"note\": \"short title\"\n    }\n  ],\n  \"other_identifiers\": [\n    {\n      \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n    },\n    {\n      \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n    }\n  ],\n  \"sponsorships\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"name\": \"JONES\",\n      \"entity_type\": \"person\",\n      \"primary\": true,\n      \"classification\": \"primary\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"person\": {\n        \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n        \"name\": \"Angela Augusta\",\n        \"party\": \"Democratic\",\n        \"current_role\": {\n          \"title\": \"Senator\",\n          \"org_classification\": \"upper\",\n          \"district\": \"string\",\n          \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n        }\n      }\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"name\": \"JONES\",\n      \"entity_type\": \"person\",\n      \"primary\": false,\n      \"classification\": \"primary\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"person\": {\n        \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n        \"name\": \"Angela Augusta\",\n        \"party\": \"Democratic\",\n        \"current_role\": {\n          \"title\": \"Senator\",\n          \"org_classification\": \"upper\",\n          \"district\": \"string\",\n          \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n        }\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"description\": \"Passed 1st Reading\",\n      \"date\": \"2020-03-14\",\n      \"classification\": [\n        \"passed\"\n      ],\n      \"order\": 6353,\n      \"related_entities\": [\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"description\": \"Passed 1st Reading\",\n      \"date\": \"2020-03-14\",\n      \"classification\": [\n        \"passed\"\n      ],\n      \"order\": 3123,\n      \"related_entities\": [\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"sources\": [\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    },\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    }\n  ],\n  \"versions\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    }\n  ],\n  \"votes\": [\n    {\n      \"id\": \"string\",\n      \"motion_text\": \"Shall the bill be passed?\",\n      \"start_date\": \"2020-09-18\",\n      \"result\": \"pass\",\n      \"identifier\": \"HV #3312\",\n      \"extras\": {},\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"votes\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"counts\": [\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        },\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"motion_classification\": [\n        \"passage\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"motion_text\": \"Shall the bill be passed?\",\n      \"start_date\": \"2020-09-18\",\n      \"result\": \"pass\",\n      \"identifier\": \"HV #3312\",\n      \"extras\": {},\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"votes\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"counts\": [\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        },\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"motion_classification\": [\n        \"passage\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6fe21f6-164a-41f0-9a04-5261ffabc678",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    "ocd-bill",
+                    ":openstates_bill_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "openstates_bill_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45c0c4e1-7d23-4960-b569-e537d33c9315",
+          "name": "Bill Detail",
+          "request": {
+            "name": "Bill Detail",
+            "description": {
+              "content": "Obtain bill information based on (state, session, bill_id).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":jurisdiction",
+                ":session",
+                ":bill_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jurisdiction",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "session",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bill_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-api-key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15924097-77ff-4989-9c53-22845fe84b4d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":jurisdiction",
+                    ":session",
+                    ":bill_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jurisdiction",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "session",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bill_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ocd-bill/f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n  \"session\": \"2020\",\n  \"jurisdiction\": {\n    \"id\": \"ocd-jurisdiction/country:us/state:nc/government\",\n    \"name\": \"North Carolina\",\n    \"classification\": \"state\"\n  },\n  \"from_organization\": {\n    \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n    \"name\": \"North Carolina General Assembly\",\n    \"classification\": \"legislature\"\n  },\n  \"identifier\": \"SB 113\",\n  \"title\": \"Adopting a State Scorpion\",\n  \"created_at\": \"1948-03-10T13:51:58.068Z\",\n  \"updated_at\": \"1978-06-24T23:19:59.629Z\",\n  \"openstates_url\": \"https://openstates.org/nc/bills/2019/HB1105/\",\n  \"classification\": [\n    \"resolution\"\n  ],\n  \"subject\": [\n    \"SCORPIONS\",\n    \"SYMBOLS\"\n  ],\n  \"extras\": {},\n  \"first_action_date\": \"2020-01-01\",\n  \"latest_action_date\": \"2020-02-01\",\n  \"latest_action_description\": \"Introduced in House\",\n  \"latest_passage_date\": \"2020-03-01\",\n  \"related_bills\": [\n    {\n      \"identifier\": \"HB 123\",\n      \"legislative_session\": \"2022S1\",\n      \"relation_type\": \"companion\"\n    },\n    {\n      \"identifier\": \"HB 123\",\n      \"legislative_session\": \"2022S1\",\n      \"relation_type\": \"companion\"\n    }\n  ],\n  \"abstracts\": [\n    {\n      \"abstract\": \"This bill designates a new state arachnid.\",\n      \"note\": \"house abstract\"\n    },\n    {\n      \"abstract\": \"This bill designates a new state arachnid.\",\n      \"note\": \"house abstract\"\n    }\n  ],\n  \"other_titles\": [\n    {\n      \"title\": \"Designating the scorpion as the state arachnid.\",\n      \"note\": \"short title\"\n    },\n    {\n      \"title\": \"Designating the scorpion as the state arachnid.\",\n      \"note\": \"short title\"\n    }\n  ],\n  \"other_identifiers\": [\n    {\n      \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n    },\n    {\n      \"identifier\": \"ocd-bill-mn-2025_2026-sf827\"\n    }\n  ],\n  \"sponsorships\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"name\": \"JONES\",\n      \"entity_type\": \"person\",\n      \"primary\": true,\n      \"classification\": \"primary\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"person\": {\n        \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n        \"name\": \"Angela Augusta\",\n        \"party\": \"Democratic\",\n        \"current_role\": {\n          \"title\": \"Senator\",\n          \"org_classification\": \"upper\",\n          \"district\": \"string\",\n          \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n        }\n      }\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"name\": \"JONES\",\n      \"entity_type\": \"person\",\n      \"primary\": false,\n      \"classification\": \"primary\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"person\": {\n        \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n        \"name\": \"Angela Augusta\",\n        \"party\": \"Democratic\",\n        \"current_role\": {\n          \"title\": \"Senator\",\n          \"org_classification\": \"upper\",\n          \"district\": \"string\",\n          \"division_id\": \"ocd-division/country:us/state:nc/sldu:3\"\n        }\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"description\": \"Passed 1st Reading\",\n      \"date\": \"2020-03-14\",\n      \"classification\": [\n        \"passed\"\n      ],\n      \"order\": 6353,\n      \"related_entities\": [\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"description\": \"Passed 1st Reading\",\n      \"date\": \"2020-03-14\",\n      \"classification\": [\n        \"passed\"\n      ],\n      \"order\": 3123,\n      \"related_entities\": [\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"name\": \"Senate Committee of the Whole\",\n          \"entity_type\": \"organization\",\n          \"organization\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"person\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"sources\": [\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    },\n    {\n      \"url\": \"https://example.com/\",\n      \"note\": \"homepage\"\n    }\n  ],\n  \"versions\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    },\n    {\n      \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n      \"note\": \"Latest Version\",\n      \"date\": \"2020-10-01\",\n      \"classification\": \"amendment\",\n      \"links\": [\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        },\n        {\n          \"url\": \"https://example.com/doc.pdf\",\n          \"media_type\": \"application/pdf\"\n        }\n      ]\n    }\n  ],\n  \"votes\": [\n    {\n      \"id\": \"string\",\n      \"motion_text\": \"Shall the bill be passed?\",\n      \"start_date\": \"2020-09-18\",\n      \"result\": \"pass\",\n      \"identifier\": \"HV #3312\",\n      \"extras\": {},\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"votes\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"counts\": [\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        },\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"motion_classification\": [\n        \"passage\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"motion_text\": \"Shall the bill be passed?\",\n      \"start_date\": \"2020-09-18\",\n      \"result\": \"pass\",\n      \"identifier\": \"HV #3312\",\n      \"extras\": {},\n      \"organization\": {\n        \"id\": \"ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605\",\n        \"name\": \"North Carolina General Assembly\",\n        \"classification\": \"legislature\"\n      },\n      \"votes\": [\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"f0049138-1ad8-4506-a2a4-f4dd1251bbba\",\n          \"option\": \"no\",\n          \"voter_name\": \"Wu\",\n          \"voter\": {\n            \"id\": \"ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14\",\n            \"name\": \"Angela Augusta\",\n            \"party\": \"Democratic\",\n            \"current_role\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"counts\": [\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        },\n        {\n          \"option\": \"yes\",\n          \"value\": 48\n        }\n      ],\n      \"sources\": [\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        },\n        {\n          \"url\": \"https://example.com/\",\n          \"note\": \"homepage\"\n        }\n      ],\n      \"motion_classification\": [\n        \"passage\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "789990ee-73e2-47ed-a0db-a55112d4a726",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":jurisdiction",
+                    ":session",
+                    ":bill_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jurisdiction",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "session",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bill_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "x-api-key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "848f8d8a-e73d-4314-afbe-00ef34f204f3",
+    "name": "Open States API v3 bills API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n* [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)\n* [Register for an account](https://openstates.org/accounts/signup/)\n\n\n**We are currently working to restore experimental support for committees & events.**\n\nDuring this period please note that data is not yet available for all states\nand the exact format of the new endpoints may change slightly depending on user feedback.\n\nIf you have any issues or questions use our\n[GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.",
+      "type": "text/plain"
+    }
+  }
+}

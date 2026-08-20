@@ -66,6 +66,8 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
+  - Bills
+  tags_raw:
   - bills
   properties:
   - type: OpenAPI
@@ -84,6 +86,8 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
+  - Committees
+  tags_raw:
   - committees
   properties:
   - type: OpenAPI
@@ -102,6 +106,8 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -120,6 +126,8 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
+  - Jurisdictions
+  tags_raw:
   - jurisdictions
   properties:
   - type: OpenAPI
@@ -156,6 +164,8 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
+  - People
+  tags_raw:
   - people
   properties:
   - type: OpenAPI

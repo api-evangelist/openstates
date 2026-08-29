@@ -9,6 +9,20 @@ description: 'Open States is a civic technology project that aggregates and publ
 
   '
 type: Index
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -179,6 +193,10 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 common:
+- type: IssueTracker
+  url: https://github.com/openstates/api-v3/issues
+- type: CodeOfConduct
+  url: https://github.com/openstates/.github/blob/main/code_of_conduct.md
 - type: License
   name: MIT
   url: https://github.com/openstates/api-v3/blob/main/LICENSE

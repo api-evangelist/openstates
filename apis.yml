@@ -80,7 +80,7 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
-  - bills
+  - Bills
   tags_raw:
   - bills
   properties:
@@ -100,7 +100,7 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
-  - committees
+  - Committees
   tags_raw:
   - committees
   properties:
@@ -140,7 +140,7 @@ apis:
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
   tags:
-  - jurisdictions
+  - Jurisdictions
   tags_raw:
   - jurisdictions
   properties:

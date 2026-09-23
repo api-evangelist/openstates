@@ -1,12 +1,9 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Open States API v3 bills committees API
-  description: '
+  title: Open States API v3 Committees API
+  description: '* More documentation
 
-    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
-
-    * [Register for an account](https://openstates.org/accounts/signup/)
-
+    * Register for an account
 
 
     **We are currently working to restore experimental support for committees & events.**
@@ -19,15 +16,15 @@ info:
 
     If you have any issues or questions use our
 
-    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+    GitHub Issues to give feedback.'
   version: 2021.11.12
 tags:
-- name: committees
+- name: Committees
 paths:
   /committees:
     get:
       tags:
-      - committees
+      - Committees
       summary: Committee List
       operationId: committee_list_committees_get
       parameters:
@@ -112,7 +109,7 @@ paths:
   /committees/{committee_id}:
     get:
       tags:
-      - committees
+      - Committees
       summary: Committee Detail
       description: Get details on a single committee by ID.
       operationId: committee_detail_committees__committee_id__get
@@ -160,69 +157,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CurrentRole:
-      title: CurrentRole
-      required:
-      - title
-      - org_classification
-      type: object
-      properties:
-        title:
-          title: Title
-          type: string
-          example: Senator
-        org_classification:
-          allOf:
-          - $ref: '#/components/schemas/OrgClassification'
-          example: upper
-        district:
-          title: District
-          anyOf:
-          - type: string
-          - type: integer
-          default: ''
-          example: 3
-        division_id:
-          title: Division Id
-          type: string
-          default: ''
-          example: ocd-division/country:us/state:nc/sldu:3
-    CompactPerson:
-      title: CompactPerson
-      required:
-      - id
-      - name
-      - party
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
-        name:
-          title: Name
-          type: string
-          example: Angela Augusta
-        party:
-          title: Party
-          type: string
-          example: Democratic
-        current_role:
-          $ref: '#/components/schemas/CurrentRole'
-    Link:
-      title: Link
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          title: Url
-          type: string
-          example: https://example.com/
-        note:
-          title: Note
-          type: string
-          example: homepage
     PaginationMeta:
       title: PaginationMeta
       required:
@@ -256,6 +190,20 @@ components:
       - sources
       type: string
       description: An enumeration.
+    Link:
+      title: Link
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
+        note:
+          title: Note
+          type: string
+          example: homepage
     ValidationError:
       title: ValidationError
       required:
@@ -277,6 +225,74 @@ components:
         type:
           title: Error Type
           type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    CompactPerson:
+      title: CompactPerson
+      required:
+      - id
+      - name
+      - party
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
+        name:
+          title: Name
+          type: string
+          example: Angela Augusta
+        party:
+          title: Party
+          type: string
+          example: Democratic
+        current_role:
+          $ref: '#/components/schemas/CurrentRole'
+    OrgClassification:
+      title: OrgClassification
+      enum:
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
+      type: string
+      description: An enumeration.
+    CurrentRole:
+      title: CurrentRole
+      required:
+      - title
+      - org_classification
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          example: Senator
+        org_classification:
+          allOf:
+          - $ref: '#/components/schemas/OrgClassification'
+          example: upper
+        district:
+          title: District
+          anyOf:
+          - type: string
+          - type: integer
+          default: ''
+          example: 3
+        division_id:
+          title: Division Id
+          type: string
+          default: ''
+          example: ocd-division/country:us/state:nc/sldu:3
     CommitteeClassification:
       title: CommitteeClassification
       enum:
@@ -284,6 +300,21 @@ components:
       - subcommittee
       type: string
       description: An enumeration.
+    CommitteeMembership:
+      title: CommitteeMembership
+      required:
+      - person_name
+      - role
+      type: object
+      properties:
+        person_name:
+          title: Person Name
+          type: string
+        role:
+          title: Role
+          type: string
+        person:
+          $ref: '#/components/schemas/CompactPerson'
     Committee:
       title: Committee
       required:
@@ -333,16 +364,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    OrgClassification:
-      title: OrgClassification
-      enum:
-      - legislature
-      - executive
-      - lower
-      - upper
-      - government
-      type: string
-      description: An enumeration.
     CommitteeList:
       title: CommitteeList
       required:
@@ -372,27 +393,3 @@ components:
           title: Note
           type: string
           example: nickname
-    CommitteeMembership:
-      title: CommitteeMembership
-      required:
-      - person_name
-      - role
-      type: object
-      properties:
-        person_name:
-          title: Person Name
-          type: string
-        role:
-          title: Role
-          type: string
-        person:
-          $ref: '#/components/schemas/CompactPerson'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'

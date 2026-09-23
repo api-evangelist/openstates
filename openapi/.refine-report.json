@@ -1,24 +1,37 @@
 {
   "provider": "openstates",
   "sources": [
-    "openstates-bills-api-openapi.yml",
-    "openstates-committees-api-openapi.yml",
-    "openstates-events-api-openapi.yml",
-    "openstates-jurisdictions-api-openapi.yml",
-    "openstates-metrics-api-openapi.yml",
-    "openstates-people-api-openapi.yml"
+    "_original/openstates-api-v3-openapi.json"
   ],
   "outputs": [
+    "openstates-metrics-api-openapi.yml",
     "openstates-bills-api-openapi.yml",
     "openstates-committees-api-openapi.yml",
     "openstates-events-api-openapi.yml",
     "openstates-jurisdictions-api-openapi.yml",
-    "openstates-metrics-api-openapi.yml",
     "openstates-people-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openstates-api-v3-openapi.json: upgraded openapi 3.0.2 -> OpenAPI 3.2.0",
+    "openstates-api-v3-openapi.json: tagged paths GET /metrics -> Metrics",
+    "openstates-api-v3-openapi.json: declared missing tag: Metrics",
+    "openstates-api-v3-openapi.json: declared missing tag: bills",
+    "openstates-api-v3-openapi.json: declared missing tag: committees",
+    "openstates-api-v3-openapi.json: declared missing tag: events",
+    "openstates-api-v3-openapi.json: declared missing tag: jurisdictions",
+    "openstates-api-v3-openapi.json: declared missing tag: people",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "openstates-bills-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstates-committees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstates-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstates-jurisdictions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstates-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openstates-people-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

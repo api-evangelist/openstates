@@ -1,12 +1,9 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Open States API v3 bills Metrics API
-  description: '
+  title: Open States API v3 Metrics API
+  description: '* More documentation
 
-    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
-
-    * [Register for an account](https://openstates.org/accounts/signup/)
-
+    * Register for an account
 
 
     **We are currently working to restore experimental support for committees & events.**
@@ -19,7 +16,7 @@ info:
 
     If you have any issues or questions use our
 
-    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+    GitHub Issues to give feedback.'
   version: 2021.11.12
 tags:
 - name: Metrics

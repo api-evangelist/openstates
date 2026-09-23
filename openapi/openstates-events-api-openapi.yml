@@ -1,12 +1,9 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Open States API v3 bills events API
-  description: '
+  title: Open States API v3 Events API
+  description: '* More documentation
 
-    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
-
-    * [Register for an account](https://openstates.org/accounts/signup/)
-
+    * Register for an account
 
 
     **We are currently working to restore experimental support for committees & events.**
@@ -19,15 +16,15 @@ info:
 
     If you have any issues or questions use our
 
-    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+    GitHub Issues to give feedback.'
   version: 2021.11.12
 tags:
-- name: events
+- name: Events
 paths:
   /events:
     get:
       tags:
-      - events
+      - Events
       summary: Event List
       operationId: event_list_events_get
       parameters:
@@ -125,7 +122,7 @@ paths:
   /events/{event_id}:
     get:
       tags:
-      - events
+      - Events
       summary: Event Detail
       description: Get details on a single event by ID.
       operationId: event_detail_events__event_id__get
@@ -173,20 +170,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Link:
-      title: Link
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          title: Url
-          type: string
-          example: https://example.com/
-        note:
-          title: Note
-          type: string
-          example: homepage
     EventMedia:
       title: EventMedia
       required:
@@ -213,21 +196,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    CompactVoteEvent:
-      title: CompactVoteEvent
-      required:
-      - id
-      - motion_text
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-vote/12345678-0000-1111-2222-333344445555
-        motion_text:
-          title: Motion Text
-          type: string
-          example: Shall the bill be passed?
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     Event:
       title: Event
       required:
@@ -308,15 +285,92 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventAgendaItem'
-    HTTPValidationError:
-      title: HTTPValidationError
+    EventDocument:
+      title: EventDocument
+      required:
+      - note
+      - date
+      - classification
+      - links
       type: object
       properties:
-        detail:
-          title: Detail
+        note:
+          title: Note
+          type: string
+        date:
+          title: Date
+          type: string
+        classification:
+          title: Classification
+          type: string
+        links:
+          title: Links
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/Link'
+    EventInclude:
+      title: EventInclude
+      enum:
+      - links
+      - sources
+      - media
+      - documents
+      - participants
+      - agenda
+      type: string
+      description: An enumeration.
+    PaginationMeta:
+      title: PaginationMeta
+      required:
+      - per_page
+      - page
+      - max_page
+      - total_items
+      type: object
+      properties:
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
+    CompactBill:
+      title: CompactBill
+      required:
+      - id
+      - session
+      - identifier
+      - title
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-bill/12345678-0000-1111-2222-333344445555
+        session:
+          title: Session
+          type: string
+        identifier:
+          title: Identifier
+          type: string
+        title:
+          title: Title
+          type: string
+        other_identifiers:
+          title: Other Identifiers
+          type: array
+          items:
+            $ref: '#/components/schemas/BillIdentifier'
     EventRelatedEntity:
       title: EventRelatedEntity
       required:
@@ -346,87 +400,112 @@ components:
           $ref: '#/components/schemas/CompactBill'
         vote:
           $ref: '#/components/schemas/CompactVoteEvent'
-    EventParticipant:
-      title: EventParticipant
+    Link:
+      title: Link
       required:
-      - note
-      - name
-      - entity_type
+      - url
       type: object
       properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
         note:
           title: Note
           type: string
-        name:
-          title: Name
-          type: string
-          example: JONES
-        entity_type:
-          title: Entity Type
-          type: string
-          example: person
-        organization:
-          title: Organization
-          allOf:
-          - $ref: '#/components/schemas/Organization'
-        person:
-          $ref: '#/components/schemas/CompactPerson'
-    PaginationMeta:
-      title: PaginationMeta
+          example: homepage
+    ValidationError:
+      title: ValidationError
       required:
-      - per_page
-      - page
-      - max_page
-      - total_items
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        per_page:
-          title: Per Page
-          type: integer
-          example: 20
-        page:
-          title: Page
-          type: integer
-          example: 1
-        max_page:
-          title: Max Page
-          type: integer
-          example: 3
-        total_items:
-          title: Total Items
-          type: integer
-          example: 52
-    EventInclude:
-      title: EventInclude
-      enum:
-      - links
-      - sources
-      - media
-      - documents
-      - participants
-      - agenda
-      type: string
-      description: An enumeration.
-    CompactJurisdiction:
-      title: CompactJurisdiction
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    BillIdentifier:
+      title: BillIdentifier
+      required:
+      - identifier
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+          example: ocd-bill-mn-2025_2026-sf827
+    CompactVoteEvent:
+      title: CompactVoteEvent
       required:
       - id
-      - name
-      - classification
+      - motion_text
       type: object
       properties:
         id:
           title: Id
           type: string
-          example: ocd-jurisdiction/country:us/state:nc/government
+          example: ocd-vote/12345678-0000-1111-2222-333344445555
+        motion_text:
+          title: Motion Text
+          type: string
+          example: Shall the bill be passed?
+    EventList:
+      title: EventList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    CompactPerson:
+      title: CompactPerson
+      required:
+      - id
+      - name
+      - party
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
         name:
           title: Name
           type: string
-          example: North Carolina
-        classification:
-          allOf:
-          - $ref: '#/components/schemas/JurisdictionClassification'
-          example: state
+          example: Angela Augusta
+        party:
+          title: Party
+          type: string
+          example: Democratic
+        current_role:
+          $ref: '#/components/schemas/CurrentRole'
+    OrgClassification:
+      title: OrgClassification
+      enum:
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
+      type: string
+      description: An enumeration.
     CurrentRole:
       title: CurrentRole
       required:
@@ -454,47 +533,92 @@ components:
           type: string
           default: ''
           example: ocd-division/country:us/state:nc/sldu:3
-    EventList:
-      title: EventList
-      required:
-      - results
-      - pagination
-      type: object
-      properties:
-        results:
-          title: Results
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-    CompactBill:
-      title: CompactBill
+    CompactJurisdiction:
+      title: CompactJurisdiction
       required:
       - id
-      - session
-      - identifier
-      - title
+      - name
+      - classification
       type: object
       properties:
         id:
           title: Id
           type: string
-          example: ocd-bill/12345678-0000-1111-2222-333344445555
-        session:
-          title: Session
+          example: ocd-jurisdiction/country:us/state:nc/government
+        name:
+          title: Name
           type: string
-        identifier:
-          title: Identifier
+          example: North Carolina
+        classification:
+          allOf:
+          - $ref: '#/components/schemas/JurisdictionClassification'
+          example: state
+    EventParticipant:
+      title: EventParticipant
+      required:
+      - note
+      - name
+      - entity_type
+      type: object
+      properties:
+        note:
+          title: Note
           type: string
-        title:
-          title: Title
+        name:
+          title: Name
           type: string
-        other_identifiers:
-          title: Other Identifiers
-          type: array
-          items:
-            $ref: '#/components/schemas/BillIdentifier'
+          example: JONES
+        entity_type:
+          title: Entity Type
+          type: string
+          example: person
+        organization:
+          title: Organization
+          allOf:
+          - $ref: '#/components/schemas/Organization'
+        person:
+          $ref: '#/components/schemas/CompactPerson'
+    EventLocation:
+      title: EventLocation
+      required:
+      - name
+      - url
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+    Organization:
+      title: Organization
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
+        name:
+          title: Name
+          type: string
+          example: North Carolina General Assembly
+        classification:
+          title: Classification
+          type: string
+          example: legislature
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
     EventAgendaItem:
       title: EventAgendaItem
       required:
@@ -542,130 +666,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventMedia'
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    OrgClassification:
-      title: OrgClassification
-      enum:
-      - legislature
-      - executive
-      - lower
-      - upper
-      - government
-      type: string
-      description: An enumeration.
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
-    CompactPerson:
-      title: CompactPerson
-      required:
-      - id
-      - name
-      - party
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
-        name:
-          title: Name
-          type: string
-          example: Angela Augusta
-        party:
-          title: Party
-          type: string
-          example: Democratic
-        current_role:
-          $ref: '#/components/schemas/CurrentRole'
-    BillIdentifier:
-      title: BillIdentifier
-      required:
-      - identifier
-      type: object
-      properties:
-        identifier:
-          title: Identifier
-          type: string
-          example: ocd-bill-mn-2025_2026-sf827
-    EventLocation:
-      title: EventLocation
-      required:
-      - name
-      - url
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          title: Url
-          type: string
-    EventDocument:
-      title: EventDocument
-      required:
-      - note
-      - date
-      - classification
-      - links
-      type: object
-      properties:
-        note:
-          title: Note
-          type: string
-        date:
-          title: Date
-          type: string
-        classification:
-          title: Classification
-          type: string
-        links:
-          title: Links
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    Organization:
-      title: Organization
-      required:
-      - id
-      - name
-      - classification
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
-        name:
-          title: Name
-          type: string
-          example: North Carolina General Assembly
-        classification:
-          title: Classification
-          type: string
-          example: legislature

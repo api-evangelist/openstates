@@ -1,12 +1,9 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Open States API v3 bills people API
-  description: '
+  title: Open States API v3 People API
+  description: '* More documentation
 
-    * [More documentation](https://docs.openstates.org/en/latest/api/v3/index.html)
-
-    * [Register for an account](https://openstates.org/accounts/signup/)
-
+    * Register for an account
 
 
     **We are currently working to restore experimental support for committees & events.**
@@ -19,15 +16,15 @@ info:
 
     If you have any issues or questions use our
 
-    [GitHub Issues](https://github.com/openstates/issues/issues) to give feedback.'
+    GitHub Issues to give feedback.'
   version: 2021.11.12
 tags:
-- name: people
+- name: People
 paths:
   /people:
     get:
       tags:
-      - people
+      - People
       summary: People Search
       description: 'Get list of people matching selected criteria.
 
@@ -130,12 +127,12 @@ paths:
   /people.geo:
     get:
       tags:
-      - people
+      - People
       summary: People Geo
       description: 'Get list of people currently representing a given location.
 
 
-        **Note:** Currently limited to state legislators and US Congress.  Governors & mayors are not included.'
+        **Note:** Currently limited to state legislators and US Congress. Governors & mayors are not included.'
       operationId: people_geo_people_geo_get
       parameters:
       - description: Latitude of point.
@@ -191,33 +188,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CurrentRole:
-      title: CurrentRole
-      required:
-      - title
-      - org_classification
-      type: object
-      properties:
-        title:
-          title: Title
-          type: string
-          example: Senator
-        org_classification:
-          allOf:
-          - $ref: '#/components/schemas/OrgClassification'
-          example: upper
-        district:
-          title: District
-          anyOf:
-          - type: string
-          - type: integer
-          default: ''
-          example: 3
-        division_id:
-          title: Division Id
-          type: string
-          default: ''
-          example: ocd-division/country:us/state:nc/sldu:3
     Office:
       title: Office
       required:
@@ -244,35 +214,31 @@ components:
           title: Classification
           type: string
           example: capitol
-    AltIdentifier:
-      title: AltIdentifier
+    PaginationMeta:
+      title: PaginationMeta
       required:
-      - identifier
-      - scheme
+      - per_page
+      - page
+      - max_page
+      - total_items
       type: object
       properties:
-        identifier:
-          title: Identifier
-          type: string
-          example: NCL000123
-        scheme:
-          title: Scheme
-          type: string
-          example: legacy_openstates
-    Link:
-      title: Link
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          title: Url
-          type: string
-          example: https://example.com/
-        note:
-          title: Note
-          type: string
-          example: homepage
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
     Person:
       title: Person
       required:
@@ -379,31 +345,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Office'
-    PaginationMeta:
-      title: PaginationMeta
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
+    Link:
+      title: Link
       required:
-      - per_page
-      - page
-      - max_page
-      - total_items
+      - url
       type: object
       properties:
-        per_page:
-          title: Per Page
-          type: integer
-          example: 20
-        page:
-          title: Page
-          type: integer
-          example: 1
-        max_page:
-          title: Max Page
-          type: integer
-          example: 3
-        total_items:
-          title: Total Items
-          type: integer
-          example: 52
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
+        note:
+          title: Note
+          type: string
+          example: homepage
+    PersonList:
+      title: PersonList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
     ValidationError:
       title: ValidationError
       required:
@@ -425,6 +402,15 @@ components:
         type:
           title: Error Type
           type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     OrgClassification:
       title: OrgClassification
       enum:
@@ -435,28 +421,21 @@ components:
       - government
       type: string
       description: An enumeration.
-    PersonList:
-      title: PersonList
+    AltIdentifier:
+      title: AltIdentifier
       required:
-      - results
-      - pagination
+      - identifier
+      - scheme
       type: object
       properties:
-        results:
-          title: Results
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
+        identifier:
+          title: Identifier
+          type: string
+          example: NCL000123
+        scheme:
+          title: Scheme
+          type: string
+          example: legacy_openstates
     CompactJurisdiction:
       title: CompactJurisdiction
       required:
@@ -477,6 +456,43 @@ components:
           allOf:
           - $ref: '#/components/schemas/JurisdictionClassification'
           example: state
+    PersonInclude:
+      title: PersonInclude
+      enum:
+      - other_names
+      - other_identifiers
+      - links
+      - sources
+      - offices
+      type: string
+      description: An enumeration.
+    CurrentRole:
+      title: CurrentRole
+      required:
+      - title
+      - org_classification
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          example: Senator
+        org_classification:
+          allOf:
+          - $ref: '#/components/schemas/OrgClassification'
+          example: upper
+        district:
+          title: District
+          anyOf:
+          - type: string
+          - type: integer
+          default: ''
+          example: 3
+        division_id:
+          title: Division Id
+          type: string
+          default: ''
+          example: ocd-division/country:us/state:nc/sldu:3
     AltName:
       title: AltName
       required:
@@ -492,22 +508,3 @@ components:
           title: Note
           type: string
           example: nickname
-    PersonInclude:
-      title: PersonInclude
-      enum:
-      - other_names
-      - other_identifiers
-      - links
-      - sources
-      - offices
-      type: string
-      description: An enumeration.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'

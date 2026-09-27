@@ -137,39 +137,52 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PaginationMeta:
-      title: PaginationMeta
+    ValidationError:
+      title: ValidationError
       required:
-      - per_page
-      - page
-      - max_page
-      - total_items
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        per_page:
-          title: Per Page
-          type: integer
-          example: 20
-        page:
-          title: Page
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Post:
+      title: Post
+      required:
+      - label
+      - role
+      - division_id
+      - maximum_memberships
+      type: object
+      properties:
+        label:
+          title: Label
+          type: string
+          example: '2'
+        role:
+          title: Role
+          type: string
+          example: Senator
+        division_id:
+          title: Division Id
+          type: string
+          example: ocd-division/country:us/state:mn/sldu:4
+        maximum_memberships:
+          title: Maximum Memberships
           type: integer
           example: 1
-        max_page:
-          title: Max Page
-          type: integer
-          example: 3
-        total_items:
-          title: Total Items
-          type: integer
-          example: 52
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
     JurisdictionList:
       title: JurisdictionList
       required:
@@ -214,27 +227,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataExport'
-    ValidationError:
-      title: ValidationError
+    PaginationMeta:
+      title: PaginationMeta
       required:
-      - loc
-      - msg
-      - type
+      - per_page
+      - page
+      - max_page
+      - total_items
       type: object
       properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -244,106 +261,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    RunPlan:
-      title: RunPlan
-      required:
-      - success
-      - start_time
-      - end_time
-      type: object
-      properties:
-        success:
-          title: Success
-          type: boolean
-        start_time:
-          title: Start Time
-          type: string
-          format: date-time
-        end_time:
-          title: End Time
-          type: string
-          format: date-time
-    Post:
-      title: Post
-      required:
-      - label
-      - role
-      - division_id
-      - maximum_memberships
-      type: object
-      properties:
-        label:
-          title: Label
-          type: string
-          example: '2'
-        role:
-          title: Role
-          type: string
-          example: Senator
-        division_id:
-          title: Division Id
-          type: string
-          example: ocd-division/country:us/state:mn/sldu:4
-        maximum_memberships:
-          title: Maximum Memberships
-          type: integer
-          example: 1
-    DataExport:
-      title: DataExport
-      required:
-      - created_at
-      - updated_at
-      - data_type
-      - url
-      type: object
-      properties:
-        created_at:
-          title: Created At
-          type: string
-          format: date-time
-        updated_at:
-          title: Updated At
-          type: string
-          format: date-time
-        data_type:
-          title: Data Type
-          type: string
-        url:
-          title: Url
-          type: string
-    Chamber:
-      title: Chamber
-      required:
-      - id
-      - name
-      - classification
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
-        name:
-          title: Name
-          type: string
-          example: North Carolina General Assembly
-        classification:
-          title: Classification
-          type: string
-          example: legislature
-        districts:
-          title: Districts
-          type: array
-          items:
-            $ref: '#/components/schemas/Post'
-    JurisdictionInclude:
-      title: JurisdictionInclude
-      enum:
-      - organizations
-      - legislative_sessions
-      - latest_runs
-      type: string
-      description: An enumeration.
     Jurisdiction:
       title: Jurisdiction
       required:
@@ -399,3 +316,86 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RunPlan'
+    RunPlan:
+      title: RunPlan
+      required:
+      - success
+      - start_time
+      - end_time
+      type: object
+      properties:
+        success:
+          title: Success
+          type: boolean
+        start_time:
+          title: Start Time
+          type: string
+          format: date-time
+        end_time:
+          title: End Time
+          type: string
+          format: date-time
+    Chamber:
+      title: Chamber
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
+        name:
+          title: Name
+          type: string
+          example: North Carolina General Assembly
+        classification:
+          title: Classification
+          type: string
+          example: legislature
+        districts:
+          title: Districts
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+    DataExport:
+      title: DataExport
+      required:
+      - created_at
+      - updated_at
+      - data_type
+      - url
+      type: object
+      properties:
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+        data_type:
+          title: Data Type
+          type: string
+        url:
+          title: Url
+          type: string
+    JurisdictionInclude:
+      title: JurisdictionInclude
+      enum:
+      - organizations
+      - legislative_sessions
+      - latest_runs
+      type: string
+      description: An enumeration.
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.

@@ -75,7 +75,7 @@ apis:
   - FN: Open States Support
     email: contact@openstates.org
 - aid: openstates:openstates-bills-api
-  name: Open States bills API
+  name: Open States Bills API
   description: The bills API from Open States — 3 operation(s) for bills.
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
@@ -95,7 +95,7 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 - aid: openstates:openstates-committees-api
-  name: Open States committees API
+  name: Open States Committees API
   description: The committees API from Open States — 2 operation(s) for committees.
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
@@ -115,7 +115,7 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 - aid: openstates:openstates-events-api
-  name: Open States events API
+  name: Open States Events API
   description: The events API from Open States — 2 operation(s) for events.
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
@@ -135,7 +135,7 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 - aid: openstates:openstates-jurisdictions-api
-  name: Open States jurisdictions API
+  name: Open States Jurisdictions API
   description: The jurisdictions API from Open States — 2 operation(s) for jurisdictions.
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/
@@ -173,7 +173,7 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 - aid: openstates:openstates-people-api
-  name: Open States people API
+  name: Open States People API
   description: The people API from Open States — 2 operation(s) for people.
   humanURL: https://docs.openstates.org/api-v3/
   baseURL: https://v3.openstates.org/

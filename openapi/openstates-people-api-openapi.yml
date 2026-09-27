@@ -188,57 +188,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Office:
-      title: Office
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-          example: District Office
-        fax:
-          title: Fax
-          type: string
-          example: 919-555-1234
-        voice:
-          title: Voice
-          type: string
-          example: 919-555-0064
-        address:
-          title: Address
-          type: string
-          example: 212 Maple Lane; Raleigh NC; 27526
-        classification:
-          title: Classification
-          type: string
-          example: capitol
-    PaginationMeta:
-      title: PaginationMeta
-      required:
-      - per_page
-      - page
-      - max_page
-      - total_items
-      type: object
-      properties:
-        per_page:
-          title: Per Page
-          type: integer
-          example: 20
-        page:
-          title: Page
-          type: integer
-          example: 1
-        max_page:
-          title: Max Page
-          type: integer
-          example: 3
-        total_items:
-          title: Total Items
-          type: integer
-          example: 52
     Person:
       title: Person
       required:
@@ -345,42 +294,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Office'
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
-    Link:
-      title: Link
+    CompactJurisdiction:
+      title: CompactJurisdiction
       required:
-      - url
+      - id
+      - name
+      - classification
       type: object
       properties:
-        url:
-          title: Url
+        id:
+          title: Id
           type: string
-          example: https://example.com/
-        note:
-          title: Note
+          example: ocd-jurisdiction/country:us/state:nc/government
+        name:
+          title: Name
           type: string
-          example: homepage
-    PersonList:
-      title: PersonList
-      required:
-      - results
-      - pagination
-      type: object
-      properties:
-        results:
-          title: Results
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
+          example: North Carolina
+        classification:
+          allOf:
+          - $ref: '#/components/schemas/JurisdictionClassification'
+          example: state
     ValidationError:
       title: ValidationError
       required:
@@ -402,70 +335,46 @@ components:
         type:
           title: Error Type
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
+    Link:
+      title: Link
+      required:
+      - url
       type: object
       properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    OrgClassification:
-      title: OrgClassification
-      enum:
-      - legislature
-      - executive
-      - lower
-      - upper
-      - government
-      type: string
-      description: An enumeration.
-    AltIdentifier:
-      title: AltIdentifier
-      required:
-      - identifier
-      - scheme
-      type: object
-      properties:
-        identifier:
-          title: Identifier
+        url:
+          title: Url
           type: string
-          example: NCL000123
-        scheme:
-          title: Scheme
+          example: https://example.com/
+        note:
+          title: Note
           type: string
-          example: legacy_openstates
-    CompactJurisdiction:
-      title: CompactJurisdiction
+          example: homepage
+    Office:
+      title: Office
       required:
-      - id
       - name
-      - classification
       type: object
       properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-jurisdiction/country:us/state:nc/government
         name:
           title: Name
           type: string
-          example: North Carolina
+          example: District Office
+        fax:
+          title: Fax
+          type: string
+          example: 919-555-1234
+        voice:
+          title: Voice
+          type: string
+          example: 919-555-0064
+        address:
+          title: Address
+          type: string
+          example: 212 Maple Lane; Raleigh NC; 27526
         classification:
-          allOf:
-          - $ref: '#/components/schemas/JurisdictionClassification'
-          example: state
-    PersonInclude:
-      title: PersonInclude
-      enum:
-      - other_names
-      - other_identifiers
-      - links
-      - sources
-      - offices
-      type: string
-      description: An enumeration.
+          title: Classification
+          type: string
+          example: capitol
     CurrentRole:
       title: CurrentRole
       required:
@@ -508,3 +417,94 @@ components:
           title: Note
           type: string
           example: nickname
+    PaginationMeta:
+      title: PaginationMeta
+      required:
+      - per_page
+      - page
+      - max_page
+      - total_items
+      type: object
+      properties:
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
+    OrgClassification:
+      title: OrgClassification
+      enum:
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
+      type: string
+      description: An enumeration.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PersonList:
+      title: PersonList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    AltIdentifier:
+      title: AltIdentifier
+      required:
+      - identifier
+      - scheme
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+          example: NCL000123
+        scheme:
+          title: Scheme
+          type: string
+          example: legacy_openstates
+    PersonInclude:
+      title: PersonInclude
+      enum:
+      - other_names
+      - other_identifiers
+      - links
+      - sources
+      - offices
+      type: string
+      description: An enumeration.
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.

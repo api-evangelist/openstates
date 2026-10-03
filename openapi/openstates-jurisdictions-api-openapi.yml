@@ -137,27 +137,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
     Post:
       title: Post
       required:
@@ -183,20 +162,81 @@ components:
           title: Maximum Memberships
           type: integer
           example: 1
-    JurisdictionList:
-      title: JurisdictionList
+    Chamber:
+      title: Chamber
       required:
-      - results
-      - pagination
+      - id
+      - name
+      - classification
       type: object
       properties:
-        results:
-          title: Results
+        id:
+          title: Id
+          type: string
+          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
+        name:
+          title: Name
+          type: string
+          example: North Carolina General Assembly
+        classification:
+          title: Classification
+          type: string
+          example: legislature
+        districts:
+          title: Districts
           type: array
           items:
-            $ref: '#/components/schemas/Jurisdiction'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
+            $ref: '#/components/schemas/Post'
+    DataExport:
+      title: DataExport
+      required:
+      - created_at
+      - updated_at
+      - data_type
+      - url
+      type: object
+      properties:
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+        data_type:
+          title: Data Type
+          type: string
+        url:
+          title: Url
+          type: string
+    RunPlan:
+      title: RunPlan
+      required:
+      - success
+      - start_time
+      - end_time
+      type: object
+      properties:
+        success:
+          title: Success
+          type: boolean
+        start_time:
+          title: Start Time
+          type: string
+          format: date-time
+        end_time:
+          title: End Time
+          type: string
+          format: date-time
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
     LegislativeSession:
       title: LegislativeSession
       required:
@@ -227,6 +267,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataExport'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    JurisdictionList:
+      title: JurisdictionList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Jurisdiction'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
     PaginationMeta:
       title: PaginationMeta
       required:
@@ -252,15 +315,6 @@ components:
           title: Total Items
           type: integer
           example: 52
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     Jurisdiction:
       title: Jurisdiction
       required:
@@ -316,73 +370,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RunPlan'
-    RunPlan:
-      title: RunPlan
-      required:
-      - success
-      - start_time
-      - end_time
-      type: object
-      properties:
-        success:
-          title: Success
-          type: boolean
-        start_time:
-          title: Start Time
-          type: string
-          format: date-time
-        end_time:
-          title: End Time
-          type: string
-          format: date-time
-    Chamber:
-      title: Chamber
-      required:
-      - id
-      - name
-      - classification
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
-        name:
-          title: Name
-          type: string
-          example: North Carolina General Assembly
-        classification:
-          title: Classification
-          type: string
-          example: legislature
-        districts:
-          title: Districts
-          type: array
-          items:
-            $ref: '#/components/schemas/Post'
-    DataExport:
-      title: DataExport
-      required:
-      - created_at
-      - updated_at
-      - data_type
-      - url
-      type: object
-      properties:
-        created_at:
-          title: Created At
-          type: string
-          format: date-time
-        updated_at:
-          title: Updated At
-          type: string
-          format: date-time
-        data_type:
-          title: Data Type
-          type: string
-        url:
-          title: Url
-          type: string
     JurisdictionInclude:
       title: JurisdictionInclude
       enum:
@@ -391,11 +378,24 @@ components:
       - latest_runs
       type: string
       description: An enumeration.
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string

@@ -300,21 +300,33 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    BillDocumentLink:
-      title: BillDocumentLink
+    CurrentRole:
+      title: CurrentRole
       required:
-      - url
-      - media_type
+      - title
+      - org_classification
       type: object
       properties:
-        url:
-          title: Url
+        title:
+          title: Title
           type: string
-          example: https://example.com/doc.pdf
-        media_type:
-          title: Media Type
+          example: Senator
+        org_classification:
+          allOf:
+          - $ref: '#/components/schemas/OrgClassification'
+          example: upper
+        district:
+          title: District
+          anyOf:
+          - type: string
+          - type: integer
+          default: ''
+          example: 3
+        division_id:
+          title: Division Id
           type: string
-          example: application/pdf
+          default: ''
+          example: ocd-division/country:us/state:nc/sldu:3
     CompactJurisdiction:
       title: CompactJurisdiction
       required:
@@ -335,226 +347,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/JurisdictionClassification'
           example: state
-    VoteCount:
-      title: VoteCount
-      required:
-      - option
-      - value
-      type: object
-      properties:
-        option:
-          title: Option
-          type: string
-          example: 'yes'
-        value:
-          title: Value
-          type: integer
-          example: 48
-    BillAbstract:
-      title: BillAbstract
-      required:
-      - abstract
-      - note
-      type: object
-      properties:
-        abstract:
-          title: Abstract
-          type: string
-          example: This bill designates a new state arachnid.
-        note:
-          title: Note
-          type: string
-          example: house abstract
-    PaginationMeta:
-      title: PaginationMeta
-      required:
-      - per_page
-      - page
-      - max_page
-      - total_items
-      type: object
-      properties:
-        per_page:
-          title: Per Page
-          type: integer
-          example: 20
-        page:
-          title: Page
-          type: integer
-          example: 1
-        max_page:
-          title: Max Page
-          type: integer
-          example: 3
-        total_items:
-          title: Total Items
-          type: integer
-          example: 52
-    OrgClassification:
-      title: OrgClassification
-      enum:
-      - legislature
-      - executive
-      - lower
-      - upper
-      - government
-      type: string
-      description: An enumeration.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    BillTitle:
-      title: BillTitle
-      required:
-      - title
-      - note
-      type: object
-      properties:
-        title:
-          title: Title
-          type: string
-          example: Designating the scorpion as the state arachnid.
-        note:
-          title: Note
-          type: string
-          example: short title
-    BillActionRelatedEntity:
-      title: BillActionRelatedEntity
-      required:
-      - name
-      - entity_type
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-          example: Senate Committee of the Whole
-        entity_type:
-          title: Entity Type
-          type: string
-          example: organization
-        organization:
-          title: Organization
-          allOf:
-          - $ref: '#/components/schemas/Organization'
-        person:
-          $ref: '#/components/schemas/CompactPerson'
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
-    BillInclude:
-      title: BillInclude
-      enum:
-      - sponsorships
-      - abstracts
-      - other_titles
-      - other_identifiers
-      - actions
-      - sources
-      - documents
-      - versions
-      - votes
-      - related_bills
-      type: string
-      description: An enumeration.
-    Link:
-      title: Link
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          title: Url
-          type: string
-          example: https://example.com/
-        note:
-          title: Note
-          type: string
-          example: homepage
-    BillAction:
-      title: BillAction
-      required:
-      - id
-      - organization
-      - description
-      - date
-      - classification
-      - order
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          format: uuid
-          example: f0049138-1ad8-4506-a2a4-f4dd1251bbba
-        organization:
-          $ref: '#/components/schemas/Organization'
-        description:
-          title: Description
-          type: string
-          example: Passed 1st Reading
-        date:
-          title: Date
-          type: string
-          example: '2020-03-14'
-        classification:
-          title: Classification
-          type: array
-          items:
-            type: string
-          example:
-          - passed
-        order:
-          title: Order
-          type: integer
-        related_entities:
-          title: Related Entities
-          type: array
-          items:
-            $ref: '#/components/schemas/BillActionRelatedEntity'
-    BillDocumentOrVersion:
-      title: BillDocumentOrVersion
-      required:
-      - id
-      - note
-      - date
-      - classification
-      - links
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          format: uuid
-          example: f0049138-1ad8-4506-a2a4-f4dd1251bbba
-        note:
-          title: Note
-          type: string
-          example: Latest Version
-        date:
-          title: Date
-          type: string
-          example: '2020-10-01'
-        classification:
-          title: Classification
-          type: string
-          example: amendment
-        links:
-          title: Links
-          type: array
-          items:
-            $ref: '#/components/schemas/BillDocumentLink'
     VoteEvent:
       title: VoteEvent
       required:
@@ -617,65 +409,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    CompactPerson:
-      title: CompactPerson
-      required:
-      - id
-      - name
-      - party
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
-        name:
-          title: Name
-          type: string
-          example: Angela Augusta
-        party:
-          title: Party
-          type: string
-          example: Democratic
-        current_role:
-          $ref: '#/components/schemas/CurrentRole'
-    BillList:
-      title: BillList
-      required:
-      - results
-      - pagination
-      type: object
-      properties:
-        results:
-          title: Results
+        detail:
+          title: Detail
           type: array
           items:
-            $ref: '#/components/schemas/Bill'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-    PersonVote:
-      title: PersonVote
-      required:
-      - id
-      - option
-      - voter_name
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          format: uuid
-          example: f0049138-1ad8-4506-a2a4-f4dd1251bbba
-        option:
-          title: Option
-          type: string
-          example: 'no'
-        voter_name:
-          title: Voter Name
-          type: string
-          example: Wu
-        voter:
-          $ref: '#/components/schemas/CompactPerson'
+            $ref: '#/components/schemas/ValidationError'
     BillSponsorship:
       title: BillSponsorship
       required:
@@ -712,6 +454,110 @@ components:
           title: Classification
           type: string
           example: primary
+    BillTitle:
+      title: BillTitle
+      required:
+      - title
+      - note
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          example: Designating the scorpion as the state arachnid.
+        note:
+          title: Note
+          type: string
+          example: short title
+    BillSortOption:
+      title: BillSortOption
+      enum:
+      - updated_asc
+      - updated_desc
+      - first_action_asc
+      - first_action_desc
+      - latest_action_asc
+      - latest_action_desc
+      type: string
+      description: An enumeration.
+    BillAbstract:
+      title: BillAbstract
+      required:
+      - abstract
+      - note
+      type: object
+      properties:
+        abstract:
+          title: Abstract
+          type: string
+          example: This bill designates a new state arachnid.
+        note:
+          title: Note
+          type: string
+          example: house abstract
+    PaginationMeta:
+      title: PaginationMeta
+      required:
+      - per_page
+      - page
+      - max_page
+      - total_items
+      type: object
+      properties:
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
+    BillDocumentLink:
+      title: BillDocumentLink
+      required:
+      - url
+      - media_type
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/doc.pdf
+        media_type:
+          title: Media Type
+          type: string
+          example: application/pdf
+    PersonVote:
+      title: PersonVote
+      required:
+      - id
+      - option
+      - voter_name
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          example: f0049138-1ad8-4506-a2a4-f4dd1251bbba
+        option:
+          title: Option
+          type: string
+          example: 'no'
+        voter_name:
+          title: Voter Name
+          type: string
+          example: Wu
+        voter:
+          $ref: '#/components/schemas/CompactPerson'
     ValidationError:
       title: ValidationError
       required:
@@ -733,44 +579,75 @@ components:
         type:
           title: Error Type
           type: string
-    BillSortOption:
-      title: BillSortOption
-      enum:
-      - updated_asc
-      - updated_desc
-      - first_action_asc
-      - first_action_desc
-      - latest_action_asc
-      - latest_action_desc
-      type: string
-      description: An enumeration.
-    CurrentRole:
-      title: CurrentRole
+    VoteCount:
+      title: VoteCount
       required:
-      - title
-      - org_classification
+      - option
+      - value
       type: object
       properties:
-        title:
-          title: Title
+        option:
+          title: Option
           type: string
-          example: Senator
-        org_classification:
-          allOf:
-          - $ref: '#/components/schemas/OrgClassification'
-          example: upper
-        district:
-          title: District
-          anyOf:
-          - type: string
-          - type: integer
-          default: ''
-          example: 3
-        division_id:
-          title: Division Id
+          example: 'yes'
+        value:
+          title: Value
+          type: integer
+          example: 48
+    CompactPerson:
+      title: CompactPerson
+      required:
+      - id
+      - name
+      - party
+      type: object
+      properties:
+        id:
+          title: Id
           type: string
-          default: ''
-          example: ocd-division/country:us/state:nc/sldu:3
+          example: ocd-person/adb58f21-f2fd-4830-85b6-f490b0867d14
+        name:
+          title: Name
+          type: string
+          example: Angela Augusta
+        party:
+          title: Party
+          type: string
+          example: Democratic
+        current_role:
+          $ref: '#/components/schemas/CurrentRole'
+    BillDocumentOrVersion:
+      title: BillDocumentOrVersion
+      required:
+      - id
+      - note
+      - date
+      - classification
+      - links
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          example: f0049138-1ad8-4506-a2a4-f4dd1251bbba
+        note:
+          title: Note
+          type: string
+          example: Latest Version
+        date:
+          title: Date
+          type: string
+          example: '2020-10-01'
+        classification:
+          title: Classification
+          type: string
+          example: amendment
+        links:
+          title: Links
+          type: array
+          items:
+            $ref: '#/components/schemas/BillDocumentLink'
     RelatedBill:
       title: RelatedBill
       required:
@@ -791,6 +668,159 @@ components:
           title: Relation Type
           type: string
           example: companion
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
+    Link:
+      title: Link
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
+        note:
+          title: Note
+          type: string
+          example: homepage
+    Organization:
+      title: Organization
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
+        name:
+          title: Name
+          type: string
+          example: North Carolina General Assembly
+        classification:
+          title: Classification
+          type: string
+          example: legislature
+    BillInclude:
+      title: BillInclude
+      enum:
+      - sponsorships
+      - abstracts
+      - other_titles
+      - other_identifiers
+      - actions
+      - sources
+      - documents
+      - versions
+      - votes
+      - related_bills
+      type: string
+      description: An enumeration.
+    OrgClassification:
+      title: OrgClassification
+      enum:
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
+      type: string
+      description: An enumeration.
+    BillAction:
+      title: BillAction
+      required:
+      - id
+      - organization
+      - description
+      - date
+      - classification
+      - order
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          example: f0049138-1ad8-4506-a2a4-f4dd1251bbba
+        organization:
+          $ref: '#/components/schemas/Organization'
+        description:
+          title: Description
+          type: string
+          example: Passed 1st Reading
+        date:
+          title: Date
+          type: string
+          example: '2020-03-14'
+        classification:
+          title: Classification
+          type: array
+          items:
+            type: string
+          example:
+          - passed
+        order:
+          title: Order
+          type: integer
+        related_entities:
+          title: Related Entities
+          type: array
+          items:
+            $ref: '#/components/schemas/BillActionRelatedEntity'
+    BillActionRelatedEntity:
+      title: BillActionRelatedEntity
+      required:
+      - name
+      - entity_type
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          example: Senate Committee of the Whole
+        entity_type:
+          title: Entity Type
+          type: string
+          example: organization
+        organization:
+          title: Organization
+          allOf:
+          - $ref: '#/components/schemas/Organization'
+        person:
+          $ref: '#/components/schemas/CompactPerson'
+    BillList:
+      title: BillList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Bill'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    BillIdentifier:
+      title: BillIdentifier
+      required:
+      - identifier
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+          example: ocd-bill-mn-2025_2026-sf827
     Bill:
       title: Bill
       required:
@@ -929,33 +959,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VoteEvent'
-    Organization:
-      title: Organization
-      required:
-      - id
-      - name
-      - classification
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-organization/32aab083-d7a0-44e0-9b95-a7790c542605
-        name:
-          title: Name
-          type: string
-          example: North Carolina General Assembly
-        classification:
-          title: Classification
-          type: string
-          example: legislature
-    BillIdentifier:
-      title: BillIdentifier
-      required:
-      - identifier
-      type: object
-      properties:
-        identifier:
-          title: Identifier
-          type: string
-          example: ocd-bill-mn-2025_2026-sf827

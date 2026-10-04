@@ -188,16 +188,35 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PersonInclude:
-      title: PersonInclude
-      enum:
-      - other_names
-      - other_identifiers
-      - links
-      - sources
-      - offices
-      type: string
-      description: An enumeration.
+    AltName:
+      title: AltName
+      required:
+      - name
+      - note
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          example: Auggie
+        note:
+          title: Note
+          type: string
+          example: nickname
+    PersonList:
+      title: PersonList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
     CurrentRole:
       title: CurrentRole
       required:
@@ -225,59 +244,32 @@ components:
           type: string
           default: ''
           example: ocd-division/country:us/state:nc/sldu:3
-    OrgClassification:
-      title: OrgClassification
-      enum:
-      - legislature
-      - executive
-      - lower
-      - upper
-      - government
-      type: string
-      description: An enumeration.
-    CompactJurisdiction:
-      title: CompactJurisdiction
+    Office:
+      title: Office
       required:
-      - id
       - name
-      - classification
       type: object
       properties:
-        id:
-          title: Id
-          type: string
-          example: ocd-jurisdiction/country:us/state:nc/government
         name:
           title: Name
           type: string
-          example: North Carolina
+          example: District Office
+        fax:
+          title: Fax
+          type: string
+          example: 919-555-1234
+        voice:
+          title: Voice
+          type: string
+          example: 919-555-0064
+        address:
+          title: Address
+          type: string
+          example: 212 Maple Lane; Raleigh NC; 27526
         classification:
-          allOf:
-          - $ref: '#/components/schemas/JurisdictionClassification'
-          example: state
-    AltIdentifier:
-      title: AltIdentifier
-      required:
-      - identifier
-      - scheme
-      type: object
-      properties:
-        identifier:
-          title: Identifier
+          title: Classification
           type: string
-          example: NCL000123
-        scheme:
-          title: Scheme
-          type: string
-          example: legacy_openstates
-    JurisdictionClassification:
-      title: JurisdictionClassification
-      enum:
-      - state
-      - municipality
-      - country
-      type: string
-      description: An enumeration.
+          example: capitol
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -287,21 +279,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    AltName:
-      title: AltName
-      required:
-      - name
-      - note
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-          example: Auggie
-        note:
-          title: Note
-          type: string
-          example: nickname
     PaginationMeta:
       title: PaginationMeta
       required:
@@ -327,6 +304,104 @@ components:
           title: Total Items
           type: integer
           example: 52
+    AltIdentifier:
+      title: AltIdentifier
+      required:
+      - identifier
+      - scheme
+      type: object
+      properties:
+        identifier:
+          title: Identifier
+          type: string
+          example: NCL000123
+        scheme:
+          title: Scheme
+          type: string
+          example: legacy_openstates
+    CompactJurisdiction:
+      title: CompactJurisdiction
+      required:
+      - id
+      - name
+      - classification
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          example: ocd-jurisdiction/country:us/state:nc/government
+        name:
+          title: Name
+          type: string
+          example: North Carolina
+        classification:
+          allOf:
+          - $ref: '#/components/schemas/JurisdictionClassification'
+          example: state
+    JurisdictionClassification:
+      title: JurisdictionClassification
+      enum:
+      - state
+      - municipality
+      - country
+      type: string
+      description: An enumeration.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Link:
+      title: Link
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
+        note:
+          title: Note
+          type: string
+          example: homepage
+    PersonInclude:
+      title: PersonInclude
+      enum:
+      - other_names
+      - other_identifiers
+      - links
+      - sources
+      - offices
+      type: string
+      description: An enumeration.
+    OrgClassification:
+      title: OrgClassification
+      enum:
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
+      type: string
+      description: An enumeration.
     Person:
       title: Person
       required:
@@ -433,78 +508,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Office'
-    Office:
-      title: Office
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-          example: District Office
-        fax:
-          title: Fax
-          type: string
-          example: 919-555-1234
-        voice:
-          title: Voice
-          type: string
-          example: 919-555-0064
-        address:
-          title: Address
-          type: string
-          example: 212 Maple Lane; Raleigh NC; 27526
-        classification:
-          title: Classification
-          type: string
-          example: capitol
-    PersonList:
-      title: PersonList
-      required:
-      - results
-      - pagination
-      type: object
-      properties:
-        results:
-          title: Results
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-    Link:
-      title: Link
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          title: Url
-          type: string
-          example: https://example.com/
-        note:
-          title: Note
-          type: string
-          example: homepage
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string

@@ -157,48 +157,12 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CommitteeClassification:
-      title: CommitteeClassification
+    CommitteeInclude:
+      title: CommitteeInclude
       enum:
-      - committee
-      - subcommittee
-      type: string
-      description: An enumeration.
-    CurrentRole:
-      title: CurrentRole
-      required:
-      - title
-      - org_classification
-      type: object
-      properties:
-        title:
-          title: Title
-          type: string
-          example: Senator
-        org_classification:
-          allOf:
-          - $ref: '#/components/schemas/OrgClassification'
-          example: upper
-        district:
-          title: District
-          anyOf:
-          - type: string
-          - type: integer
-          default: ''
-          example: 3
-        division_id:
-          title: Division Id
-          type: string
-          default: ''
-          example: ocd-division/country:us/state:nc/sldu:3
-    OrgClassification:
-      title: OrgClassification
-      enum:
-      - legislature
-      - executive
-      - lower
-      - upper
-      - government
+      - memberships
+      - links
+      - sources
       type: string
       description: An enumeration.
     CompactPerson:
@@ -223,6 +187,126 @@ components:
           example: Democratic
         current_role:
           $ref: '#/components/schemas/CurrentRole'
+    AltName:
+      title: AltName
+      required:
+      - name
+      - note
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          example: Auggie
+        note:
+          title: Note
+          type: string
+          example: nickname
+    CommitteeMembership:
+      title: CommitteeMembership
+      required:
+      - person_name
+      - role
+      type: object
+      properties:
+        person_name:
+          title: Person Name
+          type: string
+        role:
+          title: Role
+          type: string
+        person:
+          $ref: '#/components/schemas/CompactPerson'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PaginationMeta:
+      title: PaginationMeta
+      required:
+      - per_page
+      - page
+      - max_page
+      - total_items
+      type: object
+      properties:
+        per_page:
+          title: Per Page
+          type: integer
+          example: 20
+        page:
+          title: Page
+          type: integer
+          example: 1
+        max_page:
+          title: Max Page
+          type: integer
+          example: 3
+        total_items:
+          title: Total Items
+          type: integer
+          example: 52
+    CommitteeList:
+      title: CommitteeList
+      required:
+      - results
+      - pagination
+      type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/Committee'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    CommitteeClassification:
+      title: CommitteeClassification
+      enum:
+      - committee
+      - subcommittee
+      type: string
+      description: An enumeration.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Link:
+      title: Link
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          example: https://example.com/
+        note:
+          title: Note
+          type: string
+          example: homepage
     Committee:
       title: Committee
       required:
@@ -272,124 +356,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    CommitteeList:
-      title: CommitteeList
-      required:
-      - results
-      - pagination
-      type: object
-      properties:
-        results:
-          title: Results
-          type: array
-          items:
-            $ref: '#/components/schemas/Committee'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-    CommitteeInclude:
-      title: CommitteeInclude
+    OrgClassification:
+      title: OrgClassification
       enum:
-      - memberships
-      - links
-      - sources
+      - legislature
+      - executive
+      - lower
+      - upper
+      - government
       type: string
       description: An enumeration.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    AltName:
-      title: AltName
+    CurrentRole:
+      title: CurrentRole
       required:
-      - name
-      - note
+      - title
+      - org_classification
       type: object
       properties:
-        name:
-          title: Name
+        title:
+          title: Title
           type: string
-          example: Auggie
-        note:
-          title: Note
-          type: string
-          example: nickname
-    PaginationMeta:
-      title: PaginationMeta
-      required:
-      - per_page
-      - page
-      - max_page
-      - total_items
-      type: object
-      properties:
-        per_page:
-          title: Per Page
-          type: integer
-          example: 20
-        page:
-          title: Page
-          type: integer
-          example: 1
-        max_page:
-          title: Max Page
-          type: integer
+          example: Senator
+        org_classification:
+          allOf:
+          - $ref: '#/components/schemas/OrgClassification'
+          example: upper
+        district:
+          title: District
+          anyOf:
+          - type: string
+          - type: integer
+          default: ''
           example: 3
-        total_items:
-          title: Total Items
-          type: integer
-          example: 52
-    Link:
-      title: Link
-      required:
-      - url
-      type: object
-      properties:
-        url:
-          title: Url
+        division_id:
+          title: Division Id
           type: string
-          example: https://example.com/
-        note:
-          title: Note
-          type: string
-          example: homepage
-    CommitteeMembership:
-      title: CommitteeMembership
-      required:
-      - person_name
-      - role
-      type: object
-      properties:
-        person_name:
-          title: Person Name
-          type: string
-        role:
-          title: Role
-          type: string
-        person:
-          $ref: '#/components/schemas/CompactPerson'
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
+          default: ''
+          example: ocd-division/country:us/state:nc/sldu:3

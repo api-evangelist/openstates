@@ -1,0 +1,12 @@
+{
+ "url": "https://v3.openstates.org/openapi.json",
+ "requested_url": "https://v3.openstates.org/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 45488,
+ "sha256": "6d7f86636f9d4e4fe9fdb7623eb8090800121fd0f1fde825fd7e6409b111c9af",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

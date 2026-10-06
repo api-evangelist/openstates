@@ -38,7 +38,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openstates.png
 url: https://raw.githubusercontent.com/api-evangelist/openstates/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 tags:
 - Government
@@ -193,6 +193,10 @@ apis:
   - type: GitHubRepository
     url: https://github.com/openstates/api-v3
 common:
+- url: https://pluralpolicy.com/blog/
+  type: Blog
+- url: https://pluralpolicy.com/blog/feed/
+  type: BlogRSS
 - type: IssueTracker
   url: https://github.com/openstates/api-v3/issues
 - type: CodeOfConduct

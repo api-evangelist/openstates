@@ -68,3 +68,34 @@ notes: >
   Pricing is not publicly listed. All tiers are currently provided at no
   monetary cost. To request a quota upgrade, email contact@openstates.org
   describing your use case. Bulk data downloads are also available separately.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: Default
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Bronze
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Silver
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Unlimited
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []

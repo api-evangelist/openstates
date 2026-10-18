@@ -42,6 +42,17 @@ modified: '2026-10-06'
 specificationVersion: '0.23'
 tags:
 - Government
+- Legislative
+- Civic Technology
+- State Legislature
+- Bills
+- Legislators
+- Committees
+- Open Data
+- REST
+- GraphQL
+tags_raw:
+- Government
 - Legislative Data
 - Civic Technology
 - State Legislature
@@ -61,6 +72,10 @@ apis:
   humanURL: https://docs.openstates.org/graphql/
   baseURL: https://openstates.org/graphql/
   tags:
+  - GraphQL
+  - Deprecated
+  - Legislative
+  tags_raw:
   - GraphQL
   - Deprecated
   - Legislative Data

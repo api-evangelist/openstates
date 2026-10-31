@@ -1,4 +1,4 @@
-# Open States (openstates)
+# Open States
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,89 +66,159 @@
 
 Open States is a civic technology project that aggregates and publishes legislative data for all 50 US states, Washington DC, Puerto Rico, and select municipal governments. It provides a REST API (v3) and a deprecated GraphQL API (v2) for programmatic access to bill text, sponsors, votes, legislators, committee information, and legislative events. Data is also available via bulk downloads. The project is maintained by Plural Policy as open civic infrastructure.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/openstates/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/openstates/refs/heads/main/apis.yml)
+**Areas:** Government · Legislative Data · Civic Technology · State Legislature · Bills · Legislators · Committees · Open Data · REST · GraphQL
 
-## Scope
+## Open States on APIs.io
 
-- **Type:** Index
+Everything profiled for Open States is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/openstates/](https://apis.io/providers/openstates/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Government
-- Legislative Data
-- Civic Technology
-- State Legislature
-- Bills
-- Legislators
-- Committees
-- Open Data
-- REST
-- GraphQL
+- [Open States GraphQL API (v2 - Deprecated)](https://apis.io/apis/openstates/openstates-graphql-api/) — Legacy GraphQL API providing access to Open States legislative data. This API has been deprecated in favour of API v3. Existing integrations should migrate…
+- [Open States Bills API](https://apis.io/apis/openstates/openstates-bills-api/) — The bills API from Open States — 3 operation(s) for bills.
+- [Open States Committees API](https://apis.io/apis/openstates/openstates-committees-api/) — The committees API from Open States — 2 operation(s) for committees.
+- [Open States Events API](https://apis.io/apis/openstates/openstates-events-api/) — The events API from Open States — 2 operation(s) for events.
+- [Open States Jurisdictions API](https://apis.io/apis/openstates/openstates-jurisdictions-api/) — The jurisdictions API from Open States — 2 operation(s) for jurisdictions.
+- [Open States Metrics API](https://apis.io/apis/openstates/openstates-metrics-api/) — The Metrics API from Open States — 1 operation(s) for metrics.
+- [Open States People API](https://apis.io/apis/openstates/openstates-people-api/) — The people API from Open States — 2 operation(s) for people.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Open States API v3
+GraphQL schemas.
 
-REST API providing programmatic access to US state legislative data including jurisdictions, legislators, bills, committees, and events. Requires an API key obtained from open.pluralpolicy.com. Responses are in JSON. Interactive documentation is available via Swagger UI and ReDoc.
+- [Open States GraphQL API](https://apis.io/graphqls/openstates/openstates-graphql/)
 
-- **Human URL:** [https://docs.openstates.org/api-v3/](https://docs.openstates.org/api-v3/)
-- **Base URL:** `https://v3.openstates.org/`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Legislative Data
-- Bills
-- Legislators
-- Committees
-- Events
-- REST
-- Government
+- [Openstates Agentic Access](https://apis.io/agentic-access/openstates/openstates-agentic-access/)
 
-#### Properties
+#### JSON Schema (3)
 
-- [Documentation](https://docs.openstates.org/api-v3/)
-- [OpenAPI](https://v3.openstates.org/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Swagger U I](https://v3.openstates.org/docs/)
-- [Re Doc](https://v3.openstates.org/redoc/)
-- [GitHub Repository](https://github.com/openstates/api-v3)
+The data models the API reads and writes.
 
-### Open States GraphQL API (v2 - Deprecated)
+- [Bill](https://apis.io/schemas/openstates/bill/)
+- [Jurisdiction](https://apis.io/schemas/openstates/jurisdiction/)
+- [Person](https://apis.io/schemas/openstates/person/)
 
-Legacy GraphQL API providing access to Open States legislative data. This API has been deprecated in favour of API v3. Existing integrations should migrate to the REST v3 API.
+#### JSON-LD (1)
 
-- **Human URL:** [https://docs.openstates.org/graphql/](https://docs.openstates.org/graphql/)
-- **Base URL:** `https://openstates.org/graphql/`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Openstates Context](https://apis.io/jsonld/openstates/openstates-context/)
 
-- GraphQL
-- Deprecated
-- Legislative Data
+#### Examples (3)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://docs.openstates.org/graphql/)
-- [Graph Q L](graphql/openstates-graphql.md)
-- [Graph Q L Schema](graphql/openstates-schema.graphql)
+- [Bills Search](https://apis.io/examples/openstates/bills-search/)
+- [Jurisdictions List](https://apis.io/examples/openstates/jurisdictions-list/)
+- [People Geo](https://apis.io/examples/openstates/people-geo/)
 
-## Common Properties
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Open States API v3 bills API](https://apis.io/collections/openstates/open-openstates-bills-api/)
+- [Open States API v3 bills committees API](https://apis.io/collections/openstates/open-openstates-committees-api/)
+- [Open States API v3 bills events API](https://apis.io/collections/openstates/open-openstates-events-api/)
+- [Open States API v3 bills jurisdictions API](https://apis.io/collections/openstates/open-openstates-jurisdictions-api/)
+- [Open States API v3 bills Metrics API](https://apis.io/collections/openstates/open-openstates-metrics-api/)
+- [Open States API v3 bills people API](https://apis.io/collections/openstates/open-openstates-people-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Open States — jsonschema rules](https://apis.io/rules/openstates/openstates-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Openstates Domain Security](https://apis.io/security/openstates/openstates-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Openstates Plans Pricing](https://apis.io/plans/openstates/openstates-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Openstates Rate Limits](https://apis.io/rate-limits/openstates/openstates-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Openstates Finops](https://apis.io/finops/openstates/openstates-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://pluralpolicy.com/open)
 - [Documentation](https://docs.openstates.org/)
-- [Git Hub Org](https://github.com/openstates)
-- [Blog](https://blog.openstates.org/)
 - [Pricing](https://open.pluralpolicy.com/accounts/profile/)
-- [X (Twitter)](https://twitter.com/openstates)
-- [Plans](plans/openstates-plans-pricing.yml)
-- [Rate Limits](rate-limits/openstates-rate-limits.yml)
-- [Fin Ops](finops/openstates-finops.yml)
+- [Blog](https://pluralpolicy.com/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 18.4 |
+
+**Agent readiness 24.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/openstates/](https://apis.io/providers/openstates/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Open States: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/openstates/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
